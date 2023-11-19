@@ -86,6 +86,12 @@
     <Compile Include="Login\ResetPassword.Designer.cs">
       <DependentUpon>ResetPassword.cs</DependentUpon>
     </Compile>
+    <Compile Include="Main\QLPhongThi.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Main\QLPhongThi.Designer.cs">
+      <DependentUpon>QLPhongThi.cs</DependentUpon>
+    </Compile>
     <Compile Include="TaiKhoan.cs" />
     <EmbeddedResource Include="Main\HoSoThiSinh.resx">
       <DependentUpon>HoSoThiSinh.cs</DependentUpon>
@@ -111,6 +117,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Login\ResetPassword.resx">
       <DependentUpon>ResetPassword.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Main\QLPhongThi.resx">
+      <DependentUpon>QLPhongThi.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">

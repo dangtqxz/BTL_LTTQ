@@ -182,6 +182,7 @@
 			this.btnQLPT.TabIndex = 9;
 			this.btnQLPT.Text = "Quản lý phòng thi";
 			this.btnQLPT.UseTransparentBackground = true;
+			this.btnQLPT.Click += new System.EventHandler(this.btnQLPT_Click);
 			// 
 			// guna2Panel1
 			// 

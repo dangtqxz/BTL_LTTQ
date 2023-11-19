@@ -13,6 +13,7 @@ namespace BTL_ThiSinhThiDaiHoc
 	public partial class MainMenu : Form
 	{
 		HoSoThiSinh hstt = new HoSoThiSinh();
+		QLPhongThi qlpt = new QLPhongThi();
 		public MainMenu()
 		{
 			InitializeComponent();
@@ -25,6 +26,15 @@ namespace BTL_ThiSinhThiDaiHoc
 			panel_body.Controls.Add(hstt);
 			hstt.Dock = DockStyle.Fill;
 			hstt.Show();
+		}
+
+		private void btnQLPT_Click(object sender, EventArgs e)
+		{
+			panel_body.Controls.Clear();
+			qlpt.TopLevel = false;
+			panel_body.Controls.Add(qlpt);
+			qlpt.Dock = DockStyle.Fill;
+			qlpt.Show();
 		}
 	}
 }
