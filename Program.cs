@@ -16,7 +16,7 @@ namespace BTL_ThiSinhThiDaiHoc
 		{
 			Application.EnableVisualStyles();
 			Application.SetCompatibleTextRenderingDefault(false);
-			Application.Run(new Login());
+			Application.Run(new MainMenu());
 		}
 	}
 }

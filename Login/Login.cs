@@ -49,10 +49,10 @@ namespace BTL_ThiSinhThiDaiHoc
 					if (md.TaiKhoans(query).Count != 0)
 					{
 						MessageBox.Show("Dang nhap thanh cong!", "Thông báo", MessageBoxButtons.OK);
-						//this.Hide();
-						//Menu menu = new Menu();
-						//menu.ShowDialog();
-						//this.Close();
+						this.Hide();
+						MainMenu form = new MainMenu();
+						form.ShowDialog();
+						this.Close();
 					}
 					else
 					{
