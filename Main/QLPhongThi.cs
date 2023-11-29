@@ -69,8 +69,7 @@ namespace BTL_ThiSinhThiDaiHoc
                 }
 				loadData();
 			}
-			
-
+		}
 
 		private void txtSoThiSinh_KeyPress(object sender, KeyPressEventArgs e)
 		{

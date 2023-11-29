@@ -28,7 +28,9 @@
 		/// </summary>
 		private void InitializeComponent()
 		{
+			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Register));
 			this.guna2Panel1 = new Guna.UI2.WinForms.Guna2Panel();
+			this.guna2PictureBox1 = new Guna.UI2.WinForms.Guna2PictureBox();
 			this.guna2Panel2 = new Guna.UI2.WinForms.Guna2Panel();
 			this.txtMatkhau2 = new Guna.UI2.WinForms.Guna2TextBox();
 			this.txtGmail = new Guna.UI2.WinForms.Guna2TextBox();
@@ -38,10 +40,9 @@
 			this.btnRegister = new Guna.UI2.WinForms.Guna2GradientButton();
 			this.txtMatkhau = new Guna.UI2.WinForms.Guna2TextBox();
 			this.txtTendangnhap = new Guna.UI2.WinForms.Guna2TextBox();
-			this.guna2PictureBox1 = new Guna.UI2.WinForms.Guna2PictureBox();
 			this.guna2Panel1.SuspendLayout();
-			this.guna2Panel2.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.guna2PictureBox1)).BeginInit();
+			this.guna2Panel2.SuspendLayout();
 			this.SuspendLayout();
 			// 
 			// guna2Panel1
@@ -52,6 +53,18 @@
 			this.guna2Panel1.Name = "guna2Panel1";
 			this.guna2Panel1.Size = new System.Drawing.Size(400, 553);
 			this.guna2Panel1.TabIndex = 0;
+			// 
+			// guna2PictureBox1
+			// 
+			this.guna2PictureBox1.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.guna2PictureBox1.Image = global::BTL_ThiSinhThiDaiHoc.Properties.Resources.logo;
+			this.guna2PictureBox1.ImageRotate = 0F;
+			this.guna2PictureBox1.Location = new System.Drawing.Point(0, 0);
+			this.guna2PictureBox1.Name = "guna2PictureBox1";
+			this.guna2PictureBox1.Size = new System.Drawing.Size(400, 553);
+			this.guna2PictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+			this.guna2PictureBox1.TabIndex = 1;
+			this.guna2PictureBox1.TabStop = false;
 			// 
 			// guna2Panel2
 			// 
@@ -229,18 +242,6 @@
 			this.txtTendangnhap.Size = new System.Drawing.Size(349, 44);
 			this.txtTendangnhap.TabIndex = 22;
 			// 
-			// guna2PictureBox1
-			// 
-			this.guna2PictureBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.guna2PictureBox1.Image = global::BTL_ThiSinhThiDaiHoc.Properties.Resources.logo;
-			this.guna2PictureBox1.ImageRotate = 0F;
-			this.guna2PictureBox1.Location = new System.Drawing.Point(0, 0);
-			this.guna2PictureBox1.Name = "guna2PictureBox1";
-			this.guna2PictureBox1.Size = new System.Drawing.Size(400, 553);
-			this.guna2PictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-			this.guna2PictureBox1.TabIndex = 1;
-			this.guna2PictureBox1.TabStop = false;
-			// 
 			// Register
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -249,12 +250,13 @@
 			this.ClientSize = new System.Drawing.Size(882, 553);
 			this.Controls.Add(this.guna2Panel2);
 			this.Controls.Add(this.guna2Panel1);
+			this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
 			this.Name = "Register";
 			this.Text = "Register";
 			this.guna2Panel1.ResumeLayout(false);
+			((System.ComponentModel.ISupportInitialize)(this.guna2PictureBox1)).EndInit();
 			this.guna2Panel2.ResumeLayout(false);
 			this.guna2Panel2.PerformLayout();
-			((System.ComponentModel.ISupportInitialize)(this.guna2PictureBox1)).EndInit();
 			this.ResumeLayout(false);
 
 		}

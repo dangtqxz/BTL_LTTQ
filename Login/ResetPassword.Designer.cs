@@ -28,6 +28,7 @@
 		/// </summary>
 		private void InitializeComponent()
 		{
+			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ResetPassword));
 			this.guna2Panel1 = new Guna.UI2.WinForms.Guna2Panel();
 			this.guna2PictureBox1 = new Guna.UI2.WinForms.Guna2PictureBox();
 			this.guna2Panel2 = new Guna.UI2.WinForms.Guna2Panel();
@@ -168,6 +169,7 @@
 			this.ClientSize = new System.Drawing.Size(882, 553);
 			this.Controls.Add(this.guna2Panel2);
 			this.Controls.Add(this.guna2Panel1);
+			this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
 			this.Name = "ResetPassword";
 			this.Text = "ResetPassword";
 			this.guna2Panel1.ResumeLayout(false);

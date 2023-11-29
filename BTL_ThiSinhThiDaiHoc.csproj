@@ -92,6 +92,12 @@
     <Compile Include="Main\QLPhongThi.Designer.cs">
       <DependentUpon>QLPhongThi.cs</DependentUpon>
     </Compile>
+    <Compile Include="Main\QLDiem.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Main\QLDiem.Designer.cs">
+      <DependentUpon>QLDiem.cs</DependentUpon>
+    </Compile>
     <Compile Include="TaiKhoan.cs" />
     <EmbeddedResource Include="Main\HoSoThiSinh.resx">
       <DependentUpon>HoSoThiSinh.cs</DependentUpon>
@@ -120,6 +126,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Main\QLPhongThi.resx">
       <DependentUpon>QLPhongThi.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Main\QLDiem.resx">
+      <DependentUpon>QLDiem.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
