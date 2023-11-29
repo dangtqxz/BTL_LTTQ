@@ -43,9 +43,9 @@
 			this.btnQLDiem = new Guna.UI2.WinForms.Guna2GradientButton();
 			this.btnQLPT = new Guna.UI2.WinForms.Guna2GradientButton();
 			this.btnQLTS = new Guna.UI2.WinForms.Guna2GradientButton();
+			this.panel_body = new Guna.UI2.WinForms.Guna2Panel();
 			this.guna2Panel1 = new Guna.UI2.WinForms.Guna2Panel();
 			this.guna2PictureBox1 = new Guna.UI2.WinForms.Guna2PictureBox();
-			this.panel_body = new Guna.UI2.WinForms.Guna2Panel();
 			this.panel1.SuspendLayout();
 			this.panelThongKe.SuspendLayout();
 			this.panelTimKiem.SuspendLayout();
@@ -77,9 +77,9 @@
 			this.panelThongKe.Controls.Add(this.btntop10);
 			this.panelThongKe.Controls.Add(this.btndstspt);
 			this.panelThongKe.Dock = System.Windows.Forms.DockStyle.Top;
-			this.panelThongKe.Location = new System.Drawing.Point(0, 550);
+			this.panelThongKe.Location = new System.Drawing.Point(0, 570);
 			this.panelThongKe.Name = "panelThongKe";
-			this.panelThongKe.Size = new System.Drawing.Size(250, 226);
+			this.panelThongKe.Size = new System.Drawing.Size(250, 240);
 			this.panelThongKe.TabIndex = 20;
 			// 
 			// btndstrungtuyen
@@ -108,6 +108,7 @@
 			this.btndstrungtuyen.TabIndex = 23;
 			this.btndstrungtuyen.Text = "DS trúng tuyển";
 			this.btndstrungtuyen.UseTransparentBackground = true;
+			this.btndstrungtuyen.Click += new System.EventHandler(this.btndstrungtuyen_Click);
 			// 
 			// btndsdt
 			// 
@@ -162,6 +163,7 @@
 			this.btntop10.TabIndex = 21;
 			this.btntop10.Text = "Top 10 nguyện vọng";
 			this.btntop10.UseTransparentBackground = true;
+			this.btntop10.Click += new System.EventHandler(this.btntop10_Click);
 			// 
 			// btndstspt
 			// 
@@ -206,11 +208,11 @@
 			this.btnThongKe.Dock = System.Windows.Forms.DockStyle.Top;
 			this.btnThongKe.FillColor = System.Drawing.Color.Empty;
 			this.btnThongKe.FillColor2 = System.Drawing.Color.Empty;
-			this.btnThongKe.Font = new System.Drawing.Font("Segoe UI", 12F);
+			this.btnThongKe.Font = new System.Drawing.Font("Segoe UI", 13F);
 			this.btnThongKe.ForeColor = System.Drawing.Color.White;
 			this.btnThongKe.HoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(228)))), ((int)(((byte)(62)))), ((int)(((byte)(103)))));
 			this.btnThongKe.HoverState.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(42)))), ((int)(((byte)(52)))));
-			this.btnThongKe.Location = new System.Drawing.Point(0, 490);
+			this.btnThongKe.Location = new System.Drawing.Point(0, 510);
 			this.btnThongKe.Margin = new System.Windows.Forms.Padding(4);
 			this.btnThongKe.Name = "btnThongKe";
 			this.btnThongKe.Size = new System.Drawing.Size(250, 60);
@@ -224,7 +226,7 @@
 			this.panelTimKiem.Controls.Add(this.btnDiemThi);
 			this.panelTimKiem.Controls.Add(this.btnThiSinh);
 			this.panelTimKiem.Dock = System.Windows.Forms.DockStyle.Top;
-			this.panelTimKiem.Location = new System.Drawing.Point(0, 370);
+			this.panelTimKiem.Location = new System.Drawing.Point(0, 390);
 			this.panelTimKiem.Name = "panelTimKiem";
 			this.panelTimKiem.Size = new System.Drawing.Size(250, 120);
 			this.panelTimKiem.TabIndex = 18;
@@ -300,11 +302,11 @@
 			this.btnTimKiem.Dock = System.Windows.Forms.DockStyle.Top;
 			this.btnTimKiem.FillColor = System.Drawing.Color.Empty;
 			this.btnTimKiem.FillColor2 = System.Drawing.Color.Empty;
-			this.btnTimKiem.Font = new System.Drawing.Font("Segoe UI", 12F);
+			this.btnTimKiem.Font = new System.Drawing.Font("Segoe UI", 13F);
 			this.btnTimKiem.ForeColor = System.Drawing.Color.White;
 			this.btnTimKiem.HoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(228)))), ((int)(((byte)(62)))), ((int)(((byte)(103)))));
 			this.btnTimKiem.HoverState.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(42)))), ((int)(((byte)(52)))));
-			this.btnTimKiem.Location = new System.Drawing.Point(0, 310);
+			this.btnTimKiem.Location = new System.Drawing.Point(0, 330);
 			this.btnTimKiem.Margin = new System.Windows.Forms.Padding(4);
 			this.btnTimKiem.Name = "btnTimKiem";
 			this.btnTimKiem.Size = new System.Drawing.Size(250, 60);
@@ -328,11 +330,11 @@
 			this.btnQLDiem.Dock = System.Windows.Forms.DockStyle.Top;
 			this.btnQLDiem.FillColor = System.Drawing.Color.Empty;
 			this.btnQLDiem.FillColor2 = System.Drawing.Color.Empty;
-			this.btnQLDiem.Font = new System.Drawing.Font("Segoe UI", 12F);
+			this.btnQLDiem.Font = new System.Drawing.Font("Segoe UI", 13F);
 			this.btnQLDiem.ForeColor = System.Drawing.Color.White;
 			this.btnQLDiem.HoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(228)))), ((int)(((byte)(62)))), ((int)(((byte)(103)))));
 			this.btnQLDiem.HoverState.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(42)))), ((int)(((byte)(52)))));
-			this.btnQLDiem.Location = new System.Drawing.Point(0, 250);
+			this.btnQLDiem.Location = new System.Drawing.Point(0, 270);
 			this.btnQLDiem.Margin = new System.Windows.Forms.Padding(4);
 			this.btnQLDiem.Name = "btnQLDiem";
 			this.btnQLDiem.Size = new System.Drawing.Size(250, 60);
@@ -356,11 +358,11 @@
 			this.btnQLPT.Dock = System.Windows.Forms.DockStyle.Top;
 			this.btnQLPT.FillColor = System.Drawing.Color.Empty;
 			this.btnQLPT.FillColor2 = System.Drawing.Color.Empty;
-			this.btnQLPT.Font = new System.Drawing.Font("Segoe UI", 12F);
+			this.btnQLPT.Font = new System.Drawing.Font("Segoe UI", 13F);
 			this.btnQLPT.ForeColor = System.Drawing.Color.White;
 			this.btnQLPT.HoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(228)))), ((int)(((byte)(62)))), ((int)(((byte)(103)))));
 			this.btnQLPT.HoverState.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(42)))), ((int)(((byte)(52)))));
-			this.btnQLPT.Location = new System.Drawing.Point(0, 190);
+			this.btnQLPT.Location = new System.Drawing.Point(0, 210);
 			this.btnQLPT.Margin = new System.Windows.Forms.Padding(4);
 			this.btnQLPT.Name = "btnQLPT";
 			this.btnQLPT.Size = new System.Drawing.Size(250, 60);
@@ -384,11 +386,11 @@
 			this.btnQLTS.Dock = System.Windows.Forms.DockStyle.Top;
 			this.btnQLTS.FillColor = System.Drawing.Color.Empty;
 			this.btnQLTS.FillColor2 = System.Drawing.Color.Empty;
-			this.btnQLTS.Font = new System.Drawing.Font("Segoe UI", 12F);
+			this.btnQLTS.Font = new System.Drawing.Font("Segoe UI", 13F);
 			this.btnQLTS.ForeColor = System.Drawing.Color.White;
 			this.btnQLTS.HoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(228)))), ((int)(((byte)(62)))), ((int)(((byte)(103)))));
 			this.btnQLTS.HoverState.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(42)))), ((int)(((byte)(52)))));
-			this.btnQLTS.Location = new System.Drawing.Point(0, 130);
+			this.btnQLTS.Location = new System.Drawing.Point(0, 150);
 			this.btnQLTS.Margin = new System.Windows.Forms.Padding(4);
 			this.btnQLTS.Name = "btnQLTS";
 			this.btnQLTS.Size = new System.Drawing.Size(250, 60);
@@ -397,13 +399,21 @@
 			this.btnQLTS.UseTransparentBackground = true;
 			this.btnQLTS.Click += new System.EventHandler(this.btnQLTS_Click);
 			// 
+			// panel_body
+			// 
+			this.panel_body.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.panel_body.Location = new System.Drawing.Point(250, 0);
+			this.panel_body.Name = "panel_body";
+			this.panel_body.Size = new System.Drawing.Size(1332, 703);
+			this.panel_body.TabIndex = 1;
+			// 
 			// guna2Panel1
 			// 
 			this.guna2Panel1.Controls.Add(this.guna2PictureBox1);
 			this.guna2Panel1.Dock = System.Windows.Forms.DockStyle.Top;
 			this.guna2Panel1.Location = new System.Drawing.Point(0, 0);
 			this.guna2Panel1.Name = "guna2Panel1";
-			this.guna2Panel1.Size = new System.Drawing.Size(250, 130);
+			this.guna2Panel1.Size = new System.Drawing.Size(250, 150);
 			this.guna2Panel1.TabIndex = 8;
 			// 
 			// guna2PictureBox1
@@ -413,18 +423,10 @@
 			this.guna2PictureBox1.ImageRotate = 0F;
 			this.guna2PictureBox1.Location = new System.Drawing.Point(0, 0);
 			this.guna2PictureBox1.Name = "guna2PictureBox1";
-			this.guna2PictureBox1.Size = new System.Drawing.Size(250, 130);
+			this.guna2PictureBox1.Size = new System.Drawing.Size(250, 150);
 			this.guna2PictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
 			this.guna2PictureBox1.TabIndex = 1;
 			this.guna2PictureBox1.TabStop = false;
-			// 
-			// panel_body
-			// 
-			this.panel_body.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.panel_body.Location = new System.Drawing.Point(250, 0);
-			this.panel_body.Name = "panel_body";
-			this.panel_body.Size = new System.Drawing.Size(1332, 703);
-			this.panel_body.TabIndex = 1;
 			// 
 			// MainMenu
 			// 
@@ -460,11 +462,11 @@
 		private Guna.UI2.WinForms.Guna2GradientButton btnThiSinh;
 		private Guna.UI2.WinForms.Guna2GradientButton btnThongKe;
 		private Guna.UI2.WinForms.Guna2Panel panelThongKe;
-		private Guna.UI2.WinForms.Guna2Panel guna2Panel1;
 		private Guna.UI2.WinForms.Guna2GradientButton btndstrungtuyen;
 		private Guna.UI2.WinForms.Guna2GradientButton btndsdt;
 		private Guna.UI2.WinForms.Guna2GradientButton btntop10;
 		private Guna.UI2.WinForms.Guna2GradientButton btndstspt;
+		private Guna.UI2.WinForms.Guna2Panel guna2Panel1;
 		private Guna.UI2.WinForms.Guna2PictureBox guna2PictureBox1;
 	}
 }

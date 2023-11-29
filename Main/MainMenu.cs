@@ -18,6 +18,7 @@ namespace BTL_ThiSinhThiDaiHoc
 		TimKiemThiSinh tkts = new TimKiemThiSinh();
 		TimKiemDiemThi tkdt = new TimKiemDiemThi();
 		ThongKeThiSinh tktsinh = new ThongKeThiSinh();
+		DSTop10 tktop10 = new DSTop10();
 		public MainMenu()
 		{
 			InitializeComponent();
@@ -117,6 +118,17 @@ namespace BTL_ThiSinhThiDaiHoc
 		{
 			MoFile(tktsinh);
 			HideMenu();
+		}
+
+		private void btntop10_Click(object sender, EventArgs e)
+		{
+			MoFile(tktop10);
+			HideMenu();
+		}
+
+		private void btndstrungtuyen_Click(object sender, EventArgs e)
+		{
+
 		}
 	}
 }

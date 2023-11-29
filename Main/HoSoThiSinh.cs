@@ -53,5 +53,10 @@ namespace BTL_ThiSinhThiDaiHoc
 			DataTable tb = md.LoadData("Select * From HoSoThiSinh");
 			dgvHienThi.DataSource = tb;
 		}
+
+		private void btnInsert_Click(object sender, EventArgs e)
+		{
+
+		}
 	}
 }
