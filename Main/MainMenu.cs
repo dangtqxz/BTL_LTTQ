@@ -17,6 +17,7 @@ namespace BTL_ThiSinhThiDaiHoc
 		QLDiem qld = new QLDiem();
 		TimKiemThiSinh tkts = new TimKiemThiSinh();
 		TimKiemDiemThi tkdt = new TimKiemDiemThi();
+		ThongKeThiSinh tktsinh = new ThongKeThiSinh();
 		public MainMenu()
 		{
 			InitializeComponent();
@@ -109,6 +110,12 @@ namespace BTL_ThiSinhThiDaiHoc
 		private void btnDiemThi_Click(object sender, EventArgs e)
 		{
 			MoFile(tkdt);
+			HideMenu();
+		}
+
+		private void btndstspt_Click(object sender, EventArgs e)
+		{
+			MoFile(tktsinh);
 			HideMenu();
 		}
 	}

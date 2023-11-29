@@ -189,6 +189,7 @@
 			this.btndstspt.TabIndex = 20;
 			this.btndstspt.Text = "DSTS phòng thi";
 			this.btndstspt.UseTransparentBackground = true;
+			this.btndstspt.Click += new System.EventHandler(this.btndstspt_Click);
 			// 
 			// btnThongKe
 			// 
