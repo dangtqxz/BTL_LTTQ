@@ -15,6 +15,8 @@ namespace BTL_ThiSinhThiDaiHoc
 		HoSoThiSinh hstt = new HoSoThiSinh();
 		QLPhongThi qlpt = new QLPhongThi();
 		QLDiem qld = new QLDiem();
+		TimKiemThiSinh tkts = new TimKiemThiSinh();
+		TimKiemDiemThi tkdt = new TimKiemDiemThi();
 		public MainMenu()
 		{
 			InitializeComponent();
@@ -53,33 +55,38 @@ namespace BTL_ThiSinhThiDaiHoc
 			}
 		}
 
+		private Form activeForm = null;
+
+		private void MoFile(Form form)
+		{
+			if (activeForm != null)
+			{
+				activeForm.Close();
+			}
+			form.TopLevel = false;
+			form.FormBorderStyle = FormBorderStyle.None;
+			form.Dock = DockStyle.Fill;
+			panel_body.Controls.Add(form);
+			panel_body.Tag = form;
+			form.BringToFront();
+			form.Show();
+		}
+
 		private void btnQLTS_Click(object sender, EventArgs e)
 		{
-			panel_body.Controls.Clear();
-			hstt.TopLevel = false;
-			panel_body.Controls.Add(hstt);
-			hstt.Dock = DockStyle.Fill;
-			hstt.Show();
+			MoFile(hstt);
 			HideMenu();
 		}
 
 		private void btnQLPT_Click(object sender, EventArgs e)
 		{
-			panel_body.Controls.Clear();
-			qlpt.TopLevel = false;
-			panel_body.Controls.Add(qlpt);
-			qlpt.Dock = DockStyle.Fill;
-			qlpt.Show();
+			MoFile(qlpt);
 			HideMenu();
 		}
 
 		private void btnQLDiem_Click(object sender, EventArgs e)
 		{
-			panel_body.Controls.Clear();
-			qld.TopLevel = false;
-			panel_body.Controls.Add(qld);
-			qld.Dock = DockStyle.Fill;
-			qld.Show();
+			MoFile(qld);
 			HideMenu();
 		}
 
@@ -91,6 +98,18 @@ namespace BTL_ThiSinhThiDaiHoc
 		private void btnThongKe_Click(object sender, EventArgs e)
 		{
 			ShowMenu(panelThongKe);
+		}
+
+		private void btnThiSinh_Click(object sender, EventArgs e)
+		{
+			MoFile(tkts);
+			HideMenu();
+		}
+
+		private void btnDiemThi_Click(object sender, EventArgs e)
+		{
+			MoFile(tkdt);
+			HideMenu();
 		}
 	}
 }

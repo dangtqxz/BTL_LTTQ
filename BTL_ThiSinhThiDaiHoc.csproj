@@ -99,6 +99,18 @@
       <DependentUpon>QLDiem.cs</DependentUpon>
     </Compile>
     <Compile Include="TaiKhoan.cs" />
+    <Compile Include="Main\TimKiem\TimKiemThiSinh.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Main\TimKiem\TimKiemThiSinh.Designer.cs">
+      <DependentUpon>TimKiemThiSinh.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Main\TimKiem\TimKiemDiemThi.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Main\TimKiem\TimKiemDiemThi.Designer.cs">
+      <DependentUpon>TimKiemDiemThi.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Main\HoSoThiSinh.resx">
       <DependentUpon>HoSoThiSinh.cs</DependentUpon>
     </EmbeddedResource>
@@ -130,6 +142,12 @@
     <EmbeddedResource Include="Main\QLDiem.resx">
       <DependentUpon>QLDiem.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Main\TimKiem\TimKiemThiSinh.resx">
+      <DependentUpon>TimKiemThiSinh.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Main\TimKiem\TimKiemDiemThi.resx">
+      <DependentUpon>TimKiemDiemThi.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -147,6 +165,8 @@
   <ItemGroup>
     <None Include="Resources\logo.png" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Main\ThongKe\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
