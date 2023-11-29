@@ -63,10 +63,10 @@
     <Compile Include="Main\ThongKe\DSTop10.Designer.cs">
       <DependentUpon>DSTop10.cs</DependentUpon>
     </Compile>
-    <Compile Include="Main\HoSoThiSinh.cs">
+    <Compile Include="Main\HoSo\HoSoThiSinh.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Main\HoSoThiSinh.Designer.cs">
+    <Compile Include="Main\HoSo\HoSoThiSinh.Designer.cs">
       <DependentUpon>HoSoThiSinh.cs</DependentUpon>
     </Compile>
     <Compile Include="Login\Login.cs">
@@ -127,10 +127,16 @@
     <Compile Include="Main\ThongKe\ThongKeThiSinh.Designer.cs">
       <DependentUpon>ThongKeThiSinh.cs</DependentUpon>
     </Compile>
+    <Compile Include="Main\HoSo\ThemSuaXoa.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Main\HoSo\ThemSuaXoa.Designer.cs">
+      <DependentUpon>ThemSuaXoa.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Main\ThongKe\DSTop10.resx">
       <DependentUpon>DSTop10.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Main\HoSoThiSinh.resx">
+    <EmbeddedResource Include="Main\HoSo\HoSoThiSinh.resx">
       <DependentUpon>HoSoThiSinh.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Login\Login.resx">
@@ -169,6 +175,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Main\ThongKe\ThongKeThiSinh.resx">
       <DependentUpon>ThongKeThiSinh.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Main\HoSo\ThemSuaXoa.resx">
+      <DependentUpon>ThemSuaXoa.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
