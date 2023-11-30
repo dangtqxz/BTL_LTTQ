@@ -12,6 +12,7 @@ namespace BTL_ThiSinhThiDaiHoc
 {
 	public partial class MainMenu : Form
 	{
+		Modify md = new Modify();
 		HoSoThiSinh hstt = new HoSoThiSinh();
 		QLPhongThi qlpt = new QLPhongThi();
 		QLDiem qld = new QLDiem();
@@ -19,6 +20,8 @@ namespace BTL_ThiSinhThiDaiHoc
 		TimKiemDiemThi tkdt = new TimKiemDiemThi();
 		ThongKeThiSinh tktsinh = new ThongKeThiSinh();
 		DSTop10 tktop10 = new DSTop10();
+		DSDiemThi tkdthi = new DSDiemThi();
+		DSTrungTuyen DSTrungTuyen = new DSTrungTuyen();
 		public MainMenu()
 		{
 			InitializeComponent();
@@ -89,8 +92,15 @@ namespace BTL_ThiSinhThiDaiHoc
 
 		private void btnQLDiem_Click(object sender, EventArgs e)
 		{
-			MoFile(qld);
-			HideMenu();
+			DataTable dt = md.LoadData("Select * From DiemThi");
+			if (dt.Rows.Count > 0)
+			{
+				MoFile(qld);
+				HideMenu();
+			} else
+			{
+				MessageBox.Show("Vui lòng xếp phòng thi trước khi nhập điểm");
+			}
 		}
 
 		private void btnTimKiem_Click(object sender, EventArgs e)
@@ -129,7 +139,14 @@ namespace BTL_ThiSinhThiDaiHoc
 
 		private void btndstrungtuyen_Click(object sender, EventArgs e)
 		{
+			MoFile(DSTrungTuyen);
+			HideMenu();
+		}
 
+		private void btndsdt_Click(object sender, EventArgs e)
+		{
+			MoFile(tkdthi);
+			HideMenu(); 
 		}
 	}
 }

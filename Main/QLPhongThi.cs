@@ -28,7 +28,7 @@ namespace BTL_ThiSinhThiDaiHoc
 				cbbSoPhongThi.Items.Add(i["MaPhongThi"].ToString());
 			}
 
-			dt = md.LoadData("Select * From PhongThi_ThiSinh");
+			dt = md.LoadData("Select * From PhongThi_ThiSinh Order by Cast(SoBD as int) ASC");
 			dgvHienThi.DataSource = dt;
 		}
 
@@ -40,7 +40,7 @@ namespace BTL_ThiSinhThiDaiHoc
 		private void cbbSoPhongThi_SelectedIndexChanged(object sender, EventArgs e)
 		{
 			DataTable dt = md.LoadData("Select * From PhongThi_ThiSinh " +
-				"Where MaPhongThi = " + cbbSoPhongThi.SelectedItem.ToString());
+				"Where MaPhongThi = " + cbbSoPhongThi.SelectedItem.ToString() + " Order by Cast(SoBD as int) ASC");
 			dgvHienThi.DataSource = dt;
 		}
 
@@ -52,7 +52,7 @@ namespace BTL_ThiSinhThiDaiHoc
 			} else
 			{
 				md.Command("Delete From PhongThi_ThiSinh");
-				DataTable tb = md.LoadData("Select * From HoSoThiSinh");
+				DataTable tb = md.LoadData("Select * From HoSoThiSinh Order by Cast(SoBD as int) ASC");
 				var n = tb.Rows.Count;
 				var m = Int32.Parse(txtSoThiSinh.Text);
 				var count = 0;
@@ -68,7 +68,16 @@ namespace BTL_ThiSinhThiDaiHoc
 					count--;
                 }
 				loadData();
-			}
+				
+				//Sửa lại bảng điểm thi
+				DataTable tbd = md.LoadData("Select * From PhongThi_ThiSinh");
+				md.Command(" Delete From DiemThi");
+                foreach (DataRow item in tbd.Rows)
+                {
+					md.Command("Insert Into DiemThi Values ('" + item["SoBD"] + "', '" + item["MaPhongThi"] + "', 0, 0, 0)");
+                }
+                //
+            }
 		}
 
 		private void txtSoThiSinh_KeyPress(object sender, KeyPressEventArgs e)
@@ -77,6 +86,12 @@ namespace BTL_ThiSinhThiDaiHoc
 			{
 				e.Handled = true;
 			}
+		}
+
+		private void btnLamLai_Click(object sender, EventArgs e)
+		{
+			txtSoThiSinh.Text = "";
+			loadData();
 		}
 	}
 }

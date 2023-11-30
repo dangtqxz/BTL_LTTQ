@@ -274,6 +274,10 @@ namespace BTL_ThiSinhThiDaiHoc
 				+ layma(cbbMaQue.Text, "Que") + "', '" + layma(cbbMaKV.Text, "KhuVuc") + "', '" + layma(cbbMaUT.Text, "UuTien") + "', '" + layma(cbbMaDT.Text, "DoiTuong") 
 				+ "', '" + layma(cbbMaNV.Text, "NguyenVong") + "', '" + txtSBD.Text + "', N'" + txtGhiChu.Text + "')");
 			MessageBox.Show("Thêm mới thành công");
+
+			//Xoa bảng phòng thi
+			md.Command("Delete From PhongThi_ThiSinh");
+			md.Command("Delete From DiemThi");
 			this.Close();
 		}
 
@@ -381,6 +385,9 @@ namespace BTL_ThiSinhThiDaiHoc
 				+ "', MaDoiTuong = '" + layma(cbbMaDT.Text, "DoiTuong") + "', MaNguyenVong = '" + layma(cbbMaNV.Text, "NguyenVong") + "', SoBD = '" + txtSBD.Text
 				+ "', GhiChu = N'" + txtGhiChu.Text + "' WHERE SoHoSo = '" + txtSoHoSo.Text + "'");
 			MessageBox.Show("Đã sửa xong");
+			//Xóa
+			md.Command("Delete From PhongThi_ThiSinh");
+			md.Command("Delete From DiemThi");
 			this.Close();
 		}
 
@@ -390,6 +397,9 @@ namespace BTL_ThiSinhThiDaiHoc
 			{
 				md.Command("Delete HoSoThiSinh Where SoHoSo = '" + txtSoHoSo.Text + "'");
 				MessageBox.Show("Xóa thành công");
+				//Xóa
+				md.Command("Delete From PhongThi_ThiSinh");
+				md.Command("Delete From DiemThi");
 				this.Close();
 			}
 		}

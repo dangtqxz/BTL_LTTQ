@@ -23,7 +23,8 @@ namespace BTL_ThiSinhThiDaiHoc
 			DataTable tb = md.LoadData("Select a.SoHoSo, a.Ho, a.Ten, a.NgaySinh, a.GioiTinh, b.TenQue, c.TenKhuVuc, d.TenUuTien, " +
 				"e.TenDoiTuong, f.TenNguyenVong, a.SoBD, a.GhiChu From HoSoThiSinh a inner join QueQuan b on a.MaQue = b.MaQue " +
 				"inner join KhuVuc c on a.MaKhuVuc = c.MaKhuVuc inner join UuTien d on a.MaUuTien = d.MaUuTien inner join DoiTuong e" +
-				" on a.MaDoiTuong = e.MaDoiTuong inner join NguyenVong f on a.MaNguyenVong = f.MaNguyenVong");
+				" on a.MaDoiTuong = e.MaDoiTuong inner join NguyenVong f on a.MaNguyenVong = f.MaNguyenVong " +
+				"Order by Cast(SoHoSo as int) ASC");
 			dgvHienThi.DataSource = tb;
 		}
 
@@ -53,7 +54,8 @@ namespace BTL_ThiSinhThiDaiHoc
 			DataTable tb = md.LoadData("Select a.SoHoSo, a.Ho, a.Ten, a.NgaySinh, a.GioiTinh, b.TenQue, c.TenKhuVuc, d.TenUuTien, " +
 				"e.TenDoiTuong, f.TenNguyenVong, a.SoBD, a.GhiChu From HoSoThiSinh a inner join QueQuan b on a.MaQue = b.MaQue " +
 				"inner join KhuVuc c on a.MaKhuVuc = c.MaKhuVuc inner join UuTien d on a.MaUuTien = d.MaUuTien inner join DoiTuong e" +
-				" on a.MaDoiTuong = e.MaDoiTuong inner join NguyenVong f on a.MaNguyenVong = f.MaNguyenVong");
+				" on a.MaDoiTuong = e.MaDoiTuong inner join NguyenVong f on a.MaNguyenVong = f.MaNguyenVong " +
+				"Order by Cast(SoHoSo as int) ASC");
 			dgvHienThi.DataSource = tb;
 		}
 	}

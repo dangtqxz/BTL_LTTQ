@@ -43,9 +43,9 @@
 			this.btnQLDiem = new Guna.UI2.WinForms.Guna2GradientButton();
 			this.btnQLPT = new Guna.UI2.WinForms.Guna2GradientButton();
 			this.btnQLTS = new Guna.UI2.WinForms.Guna2GradientButton();
-			this.panel_body = new Guna.UI2.WinForms.Guna2Panel();
 			this.guna2Panel1 = new Guna.UI2.WinForms.Guna2Panel();
 			this.guna2PictureBox1 = new Guna.UI2.WinForms.Guna2PictureBox();
+			this.panel_body = new Guna.UI2.WinForms.Guna2Panel();
 			this.panel1.SuspendLayout();
 			this.panelThongKe.SuspendLayout();
 			this.panelTimKiem.SuspendLayout();
@@ -136,6 +136,7 @@
 			this.btndsdt.TabIndex = 22;
 			this.btndsdt.Text = "DS điểm thi";
 			this.btndsdt.UseTransparentBackground = true;
+			this.btndsdt.Click += new System.EventHandler(this.btndsdt_Click);
 			// 
 			// btntop10
 			// 
@@ -399,14 +400,6 @@
 			this.btnQLTS.UseTransparentBackground = true;
 			this.btnQLTS.Click += new System.EventHandler(this.btnQLTS_Click);
 			// 
-			// panel_body
-			// 
-			this.panel_body.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.panel_body.Location = new System.Drawing.Point(250, 0);
-			this.panel_body.Name = "panel_body";
-			this.panel_body.Size = new System.Drawing.Size(1332, 703);
-			this.panel_body.TabIndex = 1;
-			// 
 			// guna2Panel1
 			// 
 			this.guna2Panel1.Controls.Add(this.guna2PictureBox1);
@@ -427,6 +420,14 @@
 			this.guna2PictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
 			this.guna2PictureBox1.TabIndex = 1;
 			this.guna2PictureBox1.TabStop = false;
+			// 
+			// panel_body
+			// 
+			this.panel_body.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.panel_body.Location = new System.Drawing.Point(250, 0);
+			this.panel_body.Name = "panel_body";
+			this.panel_body.Size = new System.Drawing.Size(1332, 703);
+			this.panel_body.TabIndex = 1;
 			// 
 			// MainMenu
 			// 

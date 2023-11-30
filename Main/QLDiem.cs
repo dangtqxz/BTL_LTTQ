@@ -31,7 +31,7 @@ namespace BTL_ThiSinhThiDaiHoc
 			{
 				cbbMaPhongThi.Items.Add(i["MaPhongThi"].ToString());
 			}
-			dt = md.LoadData("Select * From DiemThi");
+			dt = md.LoadData("Select * From DiemThi Order by Cast(SoBD as int) ASC");
 			dgvHienThi.DataSource = dt;
 			dgvHienThi.ReadOnly = true;
 		}
@@ -65,7 +65,7 @@ namespace BTL_ThiSinhThiDaiHoc
 		private void loadCBB()
 		{
 			DataTable dt = md.LoadData("Select * From DiemThi " +
-				"Where MaPhongThi = " + cbbMaPhongThi.SelectedItem.ToString());
+				"Where MaPhongThi = " + cbbMaPhongThi.SelectedItem.ToString() + " Order by Cast(SoBD as int) ASC");
 			dgvHienThi.DataSource = dt;
 		}
 
@@ -73,6 +73,11 @@ namespace BTL_ThiSinhThiDaiHoc
 		{
 			loadCBB();
 			dgvHienThi.ReadOnly = false;
+		}
+
+		private void btnLamLai_Click(object sender, EventArgs e)
+		{
+			loadData();
 		}
 	}
 }
