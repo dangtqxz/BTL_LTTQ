@@ -28,17 +28,20 @@
 		/// </summary>
 		private void InitializeComponent()
 		{
-			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle25 = new System.Windows.Forms.DataGridViewCellStyle();
-			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle26 = new System.Windows.Forms.DataGridViewCellStyle();
-			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle27 = new System.Windows.Forms.DataGridViewCellStyle();
+			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
 			this.panel_body = new Guna.UI2.WinForms.Guna2Panel();
+			this.label4 = new System.Windows.Forms.Label();
+			this.cbbSoPhongThi = new Guna.UI2.WinForms.Guna2ComboBox();
+			this.label2 = new System.Windows.Forms.Label();
 			this.txtSoThiSinh = new Guna.UI2.WinForms.Guna2TextBox();
 			this.label1 = new System.Windows.Forms.Label();
 			this.btnInsert = new Guna.UI2.WinForms.Guna2GradientButton();
-			this.label2 = new System.Windows.Forms.Label();
 			this.dgvHienThi = new Guna.UI2.WinForms.Guna2DataGridView();
-			this.label4 = new System.Windows.Forms.Label();
-			this.cbbSoPhongThi = new Guna.UI2.WinForms.Guna2ComboBox();
+			this.MaPhongThi = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.SoBD = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.SoThiSinh = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.panel_body.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.dgvHienThi)).BeginInit();
 			this.SuspendLayout();
@@ -57,6 +60,56 @@
 			this.panel_body.Name = "panel_body";
 			this.panel_body.Size = new System.Drawing.Size(1332, 300);
 			this.panel_body.TabIndex = 0;
+			// 
+			// label4
+			// 
+			this.label4.Anchor = System.Windows.Forms.AnchorStyles.Top;
+			this.label4.AutoSize = true;
+			this.label4.Font = new System.Drawing.Font("Segoe UI", 12F);
+			this.label4.ForeColor = System.Drawing.Color.White;
+			this.label4.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+			this.label4.Location = new System.Drawing.Point(792, 232);
+			this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+			this.label4.Name = "label4";
+			this.label4.Size = new System.Drawing.Size(135, 28);
+			this.label4.TabIndex = 38;
+			this.label4.Text = "Mã phòng thi:";
+			// 
+			// cbbSoPhongThi
+			// 
+			this.cbbSoPhongThi.Anchor = System.Windows.Forms.AnchorStyles.Top;
+			this.cbbSoPhongThi.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(81)))));
+			this.cbbSoPhongThi.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(234)))), ((int)(((byte)(153)))), ((int)(((byte)(149)))));
+			this.cbbSoPhongThi.BorderRadius = 6;
+			this.cbbSoPhongThi.Cursor = System.Windows.Forms.Cursors.Hand;
+			this.cbbSoPhongThi.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+			this.cbbSoPhongThi.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+			this.cbbSoPhongThi.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(81)))));
+			this.cbbSoPhongThi.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+			this.cbbSoPhongThi.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+			this.cbbSoPhongThi.Font = new System.Drawing.Font("Segoe UI", 12F);
+			this.cbbSoPhongThi.ForeColor = System.Drawing.Color.White;
+			this.cbbSoPhongThi.ItemHeight = 30;
+			this.cbbSoPhongThi.Location = new System.Drawing.Point(964, 224);
+			this.cbbSoPhongThi.Margin = new System.Windows.Forms.Padding(4);
+			this.cbbSoPhongThi.Name = "cbbSoPhongThi";
+			this.cbbSoPhongThi.Size = new System.Drawing.Size(305, 36);
+			this.cbbSoPhongThi.TabIndex = 37;
+			this.cbbSoPhongThi.SelectedIndexChanged += new System.EventHandler(this.cbbSoPhongThi_SelectedIndexChanged);
+			// 
+			// label2
+			// 
+			this.label2.Anchor = System.Windows.Forms.AnchorStyles.Top;
+			this.label2.AutoSize = true;
+			this.label2.Font = new System.Drawing.Font("Segoe UI", 20F);
+			this.label2.ForeColor = System.Drawing.Color.White;
+			this.label2.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+			this.label2.Location = new System.Drawing.Point(522, 9);
+			this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+			this.label2.Name = "label2";
+			this.label2.Size = new System.Drawing.Size(289, 46);
+			this.label2.TabIndex = 24;
+			this.label2.Text = "Quản lý phòng thi";
 			// 
 			// txtSoThiSinh
 			// 
@@ -121,45 +174,35 @@
 			this.btnInsert.Text = "Xếp phòng thi";
 			this.btnInsert.Click += new System.EventHandler(this.btnInsert_Click);
 			// 
-			// label2
-			// 
-			this.label2.Anchor = System.Windows.Forms.AnchorStyles.Top;
-			this.label2.AutoSize = true;
-			this.label2.Font = new System.Drawing.Font("Segoe UI", 20F);
-			this.label2.ForeColor = System.Drawing.Color.White;
-			this.label2.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-			this.label2.Location = new System.Drawing.Point(522, 9);
-			this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-			this.label2.Name = "label2";
-			this.label2.Size = new System.Drawing.Size(289, 46);
-			this.label2.TabIndex = 24;
-			this.label2.Text = "Quản lý phòng thi";
-			// 
 			// dgvHienThi
 			// 
 			this.dgvHienThi.AllowUserToAddRows = false;
 			this.dgvHienThi.AllowUserToDeleteRows = false;
-			dataGridViewCellStyle25.BackColor = System.Drawing.Color.White;
-			this.dgvHienThi.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle25;
-			dataGridViewCellStyle26.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-			dataGridViewCellStyle26.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(88)))), ((int)(((byte)(255)))));
-			dataGridViewCellStyle26.Font = new System.Drawing.Font("Segoe UI", 12F);
-			dataGridViewCellStyle26.ForeColor = System.Drawing.Color.White;
-			dataGridViewCellStyle26.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-			dataGridViewCellStyle26.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-			dataGridViewCellStyle26.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-			this.dgvHienThi.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle26;
+			dataGridViewCellStyle1.BackColor = System.Drawing.Color.White;
+			this.dgvHienThi.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+			dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+			dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(88)))), ((int)(((byte)(255)))));
+			dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 12F);
+			dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
+			dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+			dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+			dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+			this.dgvHienThi.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
 			this.dgvHienThi.ColumnHeadersHeight = 35;
 			this.dgvHienThi.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
+			this.dgvHienThi.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.MaPhongThi,
+            this.SoBD,
+            this.SoThiSinh});
 			this.dgvHienThi.Cursor = System.Windows.Forms.Cursors.Default;
-			dataGridViewCellStyle27.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-			dataGridViewCellStyle27.BackColor = System.Drawing.Color.White;
-			dataGridViewCellStyle27.Font = new System.Drawing.Font("Segoe UI", 12F);
-			dataGridViewCellStyle27.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
-			dataGridViewCellStyle27.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
-			dataGridViewCellStyle27.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
-			dataGridViewCellStyle27.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-			this.dgvHienThi.DefaultCellStyle = dataGridViewCellStyle27;
+			dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+			dataGridViewCellStyle3.BackColor = System.Drawing.Color.White;
+			dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 12F);
+			dataGridViewCellStyle3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
+			dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
+			dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
+			dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+			this.dgvHienThi.DefaultCellStyle = dataGridViewCellStyle3;
 			this.dgvHienThi.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.dgvHienThi.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
 			this.dgvHienThi.Location = new System.Drawing.Point(0, 300);
@@ -193,41 +236,29 @@
 			this.dgvHienThi.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
 			this.dgvHienThi.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
 			// 
-			// label4
+			// MaPhongThi
 			// 
-			this.label4.Anchor = System.Windows.Forms.AnchorStyles.Top;
-			this.label4.AutoSize = true;
-			this.label4.Font = new System.Drawing.Font("Segoe UI", 12F);
-			this.label4.ForeColor = System.Drawing.Color.White;
-			this.label4.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-			this.label4.Location = new System.Drawing.Point(792, 232);
-			this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-			this.label4.Name = "label4";
-			this.label4.Size = new System.Drawing.Size(135, 28);
-			this.label4.TabIndex = 38;
-			this.label4.Text = "Mã phòng thi:";
+			this.MaPhongThi.DataPropertyName = "MaPhongThi";
+			this.MaPhongThi.HeaderText = "Mã phòng thi";
+			this.MaPhongThi.MinimumWidth = 6;
+			this.MaPhongThi.Name = "MaPhongThi";
+			this.MaPhongThi.ReadOnly = true;
 			// 
-			// cbbSoPhongThi
+			// SoBD
 			// 
-			this.cbbSoPhongThi.Anchor = System.Windows.Forms.AnchorStyles.Top;
-			this.cbbSoPhongThi.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(81)))));
-			this.cbbSoPhongThi.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(234)))), ((int)(((byte)(153)))), ((int)(((byte)(149)))));
-			this.cbbSoPhongThi.BorderRadius = 6;
-			this.cbbSoPhongThi.Cursor = System.Windows.Forms.Cursors.Hand;
-			this.cbbSoPhongThi.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
-			this.cbbSoPhongThi.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-			this.cbbSoPhongThi.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(81)))));
-			this.cbbSoPhongThi.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-			this.cbbSoPhongThi.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-			this.cbbSoPhongThi.Font = new System.Drawing.Font("Segoe UI", 12F);
-			this.cbbSoPhongThi.ForeColor = System.Drawing.Color.White;
-			this.cbbSoPhongThi.ItemHeight = 30;
-			this.cbbSoPhongThi.Location = new System.Drawing.Point(964, 224);
-			this.cbbSoPhongThi.Margin = new System.Windows.Forms.Padding(4);
-			this.cbbSoPhongThi.Name = "cbbSoPhongThi";
-			this.cbbSoPhongThi.Size = new System.Drawing.Size(305, 36);
-			this.cbbSoPhongThi.TabIndex = 37;
-			this.cbbSoPhongThi.SelectedIndexChanged += new System.EventHandler(this.cbbSoPhongThi_SelectedIndexChanged);
+			this.SoBD.DataPropertyName = "SoBD";
+			this.SoBD.HeaderText = "Số báo danh";
+			this.SoBD.MinimumWidth = 6;
+			this.SoBD.Name = "SoBD";
+			this.SoBD.ReadOnly = true;
+			// 
+			// SoThiSinh
+			// 
+			this.SoThiSinh.DataPropertyName = "SoThiSinh";
+			this.SoThiSinh.HeaderText = "Số thí sinh";
+			this.SoThiSinh.MinimumWidth = 6;
+			this.SoThiSinh.Name = "SoThiSinh";
+			this.SoThiSinh.ReadOnly = true;
 			// 
 			// QLPhongThi
 			// 
@@ -257,5 +288,8 @@
 		private Guna.UI2.WinForms.Guna2DataGridView dgvHienThi;
 		private System.Windows.Forms.Label label4;
 		private Guna.UI2.WinForms.Guna2ComboBox cbbSoPhongThi;
+		private System.Windows.Forms.DataGridViewTextBoxColumn MaPhongThi;
+		private System.Windows.Forms.DataGridViewTextBoxColumn SoBD;
+		private System.Windows.Forms.DataGridViewTextBoxColumn SoThiSinh;
 	}
 }

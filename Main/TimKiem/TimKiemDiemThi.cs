@@ -40,7 +40,8 @@ namespace BTL_ThiSinhThiDaiHoc
 				{
 					string ho = hoten.Substring(0, hoten.LastIndexOf(" "));
 					string ten = hoten.Substring(hoten.LastIndexOf(" ") + 1);
-					dt = md.LoadData("Select b.* From HoSoThiSinh a Inner Join DiemThi b On a.SoBD = b.SoBD Where a.Ho = N'" + ho + "' And a.Ten = N'" + ten + "'");
+					dt = md.LoadData("Select a.SoBD, a.Ho, a.Ten, b.DiemMon1, b.DiemMon2, b.DiemMon3 From HoSoThiSinh a Inner Join DiemThi b On a.SoBD = b.SoBD " +
+						"Where a.Ho = N'" + ho + "' And a.Ten = N'" + ten + "'");
 				}
 
 				if (dt.Rows.Count > 0)
@@ -49,7 +50,8 @@ namespace BTL_ThiSinhThiDaiHoc
 				}
 				else
 				{
-					dt = md.LoadData("Select * From DiemThi Where SoBD = N'" + txtTimKiem.Text + "'");
+					dt = md.LoadData("Select a.SoBD, a.Ho, a.Ten, b.DiemMon1, b.DiemMon2, b.DiemMon3 From HoSoThiSinh a Inner Join DiemThi b On a.SoBD = b.SoBD " +
+						"Where a.SoBD = N'" + txtTimKiem.Text + "'");
 
 					if (dt.Rows.Count > 0)
 					{

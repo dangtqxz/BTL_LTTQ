@@ -44,9 +44,11 @@ namespace BTL_ThiSinhThiDaiHoc
 
 		private void cbbPhongthi_SelectedIndexChanged(object sender, EventArgs e)
 		{
-			DataTable dt = md.LoadData("Select b.MaPhongThi, a.SoHoSo, a.Ho, a.Ten, Case WHEN a.GioiTinh = 1 THEN N'Nam' WHEN a.GioiTinh = 0 THEN N'Nữ' " +
-				"End As GioiTinh, a.NgaySinh, a.SoBD From HoSoThiSinh a inner join Phongthi_ThiSinh b on a.SoBD = b.SoBD" +
-				" Where b.MaPhongThi = " + cbbPhongthi.SelectedItem.ToString());
+			DataTable dt = md.LoadData("Select a.SoHoSo, a.Ho, a.Ten, a.NgaySinh, a.GioiTinh, b.TenQue, c.TenKhuVuc, d.TenUuTien, " +
+				"e.TenDoiTuong, f.TenNguyenVong, a.SoBD, a.GhiChu From HoSoThiSinh a inner join QueQuan b on a.MaQue = b.MaQue " +
+				"inner join KhuVuc c on a.MaKhuVuc = c.MaKhuVuc inner join UuTien d on a.MaUuTien = d.MaUuTien inner join DoiTuong e" +
+				" on a.MaDoiTuong = e.MaDoiTuong inner join NguyenVong f on a.MaNguyenVong = f.MaNguyenVong inner join Phongthi_ThiSinh g on a.SoBD = g.SoBD" +
+				" Where g.MaPhongThi = " + cbbPhongthi.SelectedItem.ToString());
 			dgvHienThi.DataSource = dt;
 			btnXuat.Enabled = true;
 		}

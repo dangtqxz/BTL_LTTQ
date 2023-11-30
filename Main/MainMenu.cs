@@ -22,6 +22,7 @@ namespace BTL_ThiSinhThiDaiHoc
 		public MainMenu()
 		{
 			InitializeComponent();
+			this.StartPosition = FormStartPosition.CenterScreen;
 		}
 
 		private void MainMenu_Load(object sender, EventArgs e)

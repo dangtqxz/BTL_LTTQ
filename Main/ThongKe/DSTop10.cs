@@ -45,9 +45,11 @@ namespace BTL_ThiSinhThiDaiHoc
 		private void cbbNguyenVong_SelectedIndexChanged(object sender, EventArgs e)
 		{
 			string ma = layma(cbbNguyenVong.Text.ToString());
-			DataTable dt = md.LoadData("Select Top 10 a.SoHoSo, a.SoBD, a.Ho, a.Ten, a.NgaySinh, Case WHEN a.GioiTinh = 1 THEN N'Nam'" +
-				" WHEN a.GioiTinh = 0 THEN N'Nữ' End As GioiTinh, (c.DiemMon1+c.DiemMon2+c.DiemMon3) As TongDiem From HoSoThiSinh a" +
-				" inner join NguyenVong b on a.MaNguyenVong = b.MaNguyenVong inner join DiemThi c on a.SoBD = c.SoBD " +
+			DataTable dt = md.LoadData("Select Top 10 a.SoHoSo, a.Ho, a.Ten, a.NgaySinh, Case WHEN a.GioiTinh = 1 THEN N'Nam' WHEN a.GioiTinh = 0 THEN N'Nữ' " +
+				"End As GioiTinh, b.TenQue, a.SoBD, h.DiemMon1, h.DiemMon2, h.DiemMon3, (c.DiemCong+d.DiemUuTien+e.DiemCong) As DiemCong, " +
+				"(h.DiemMon1+h.DiemMon2+h.DiemMon3+c.DiemCong+d.DiemUuTien+e.DiemCong) As TongDiem From HoSoThiSinh a inner join QueQuan b on a.MaQue = b.MaQue " +
+				"inner join KhuVuc c on a.MaKhuVuc = c.MaKhuVuc inner join UuTien d on a.MaUuTien = d.MaUuTien inner join DoiTuong e on a.MaDoiTuong = e.MaDoiTuong " +
+				"inner join NguyenVong f on a.MaNguyenVong = f.MaNguyenVong inner join DiemThi h on a.SoBD = h.SoBD " +
 				"Where a.MaNguyenVong = '" + ma + "' Order by TongDiem DESC");
 			dgvHienThi.DataSource = dt;
 			if (dt.Rows.Count > 0)

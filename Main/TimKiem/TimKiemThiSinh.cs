@@ -40,7 +40,10 @@ namespace BTL_ThiSinhThiDaiHoc
 				{
 					string ho = hoten.Substring(0, hoten.LastIndexOf(" "));
 					string ten = hoten.Substring(hoten.LastIndexOf(" ") + 1);
-					dt = md.LoadData("Select * From HoSoThiSinh Where Ho = N'" + ho + "' And Ten = N'" + ten + "'");
+					dt = md.LoadData("Select a.SoHoSo, a.Ho, a.Ten, a.NgaySinh, a.GioiTinh, b.TenQue, c.TenKhuVuc, d.TenUuTien, " +
+						"e.TenDoiTuong, f.TenNguyenVong, a.SoBD, a.GhiChu From HoSoThiSinh a inner join QueQuan b on a.MaQue = b.MaQue " +
+						"inner join KhuVuc c on a.MaKhuVuc = c.MaKhuVuc inner join UuTien d on a.MaUuTien = d.MaUuTien inner join DoiTuong e" +
+						" on a.MaDoiTuong = e.MaDoiTuong inner join NguyenVong f on a.MaNguyenVong = f.MaNguyenVong Where Ho = N'" + ho + "' And Ten = N'" + ten + "'");
 				}
 
 				if (dt.Rows.Count > 0)
@@ -49,7 +52,10 @@ namespace BTL_ThiSinhThiDaiHoc
 				}
 				else
 				{
-					dt = md.LoadData("Select * From HoSoThiSinh Where MaDoiTuong = N'" + txtTimKiem.Text + "'");
+					dt = md.LoadData("Select a.SoHoSo, a.Ho, a.Ten, a.NgaySinh, a.GioiTinh, b.TenQue, c.TenKhuVuc, d.TenUuTien, " +
+						"e.TenDoiTuong, f.TenNguyenVong, a.SoBD, a.GhiChu From HoSoThiSinh a inner join QueQuan b on a.MaQue = b.MaQue " +
+						"inner join KhuVuc c on a.MaKhuVuc = c.MaKhuVuc inner join UuTien d on a.MaUuTien = d.MaUuTien inner join DoiTuong e" +
+						" on a.MaDoiTuong = e.MaDoiTuong inner join NguyenVong f on a.MaNguyenVong = f.MaNguyenVong Where MaDoiTuong = N'" + txtTimKiem.Text + "'");
 
 					if (dt.Rows.Count > 0)
 					{
@@ -57,7 +63,10 @@ namespace BTL_ThiSinhThiDaiHoc
 					}
 					else
 					{
-						dt = md.LoadData("Select * From HoSoThiSinh Where MaNguyenVong = N'" + txtTimKiem.Text + "'");
+						dt = md.LoadData("Select a.SoHoSo, a.Ho, a.Ten, a.NgaySinh, a.GioiTinh, b.TenQue, c.TenKhuVuc, d.TenUuTien, " +
+						"e.TenDoiTuong, f.TenNguyenVong, a.SoBD, a.GhiChu From HoSoThiSinh a inner join QueQuan b on a.MaQue = b.MaQue " +
+						"inner join KhuVuc c on a.MaKhuVuc = c.MaKhuVuc inner join UuTien d on a.MaUuTien = d.MaUuTien inner join DoiTuong e" +
+						" on a.MaDoiTuong = e.MaDoiTuong inner join NguyenVong f on a.MaNguyenVong = f.MaNguyenVong Where MaNguyenVong = N'" + txtTimKiem.Text + "'");
 
 						if (dt.Rows.Count > 0)
 						{

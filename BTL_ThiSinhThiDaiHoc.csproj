@@ -57,6 +57,18 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Connection.cs" />
+    <Compile Include="Main\ThongKe\DSDiemThi.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Main\ThongKe\DSDiemThi.Designer.cs">
+      <DependentUpon>DSDiemThi.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Main\ThongKe\DSTrungTuyen.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Main\ThongKe\DSTrungTuyen.Designer.cs">
+      <DependentUpon>DSTrungTuyen.cs</DependentUpon>
+    </Compile>
     <Compile Include="Main\ThongKe\DSTop10.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -133,6 +145,12 @@
     <Compile Include="Main\HoSo\ThemSuaXoa.Designer.cs">
       <DependentUpon>ThemSuaXoa.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Main\ThongKe\DSDiemThi.resx">
+      <DependentUpon>DSDiemThi.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Main\ThongKe\DSTrungTuyen.resx">
+      <DependentUpon>DSTrungTuyen.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Main\ThongKe\DSTop10.resx">
       <DependentUpon>DSTop10.cs</DependentUpon>
     </EmbeddedResource>
