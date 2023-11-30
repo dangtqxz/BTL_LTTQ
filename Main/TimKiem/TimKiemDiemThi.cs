@@ -21,7 +21,8 @@ namespace BTL_ThiSinhThiDaiHoc
 		private void btnRefresh_Click(object sender, EventArgs e)
 		{
 			txtTimKiem.Text = "";
-			dgvHienThi.DataSource = null;
+			dgvHienThi.DataSource = md.LoadData("Select a.SoBD, a.Ho, a.Ten, b.DiemMon1, b.DiemMon2, b.DiemMon3 From HoSoThiSinh a Inner Join DiemThi b On a.SoBD = b.SoBD " +
+						"Where a.Ho = N'' And a.Ten = N''");
 		}
 
 		private void btnTimKiem_Click(object sender, EventArgs e)

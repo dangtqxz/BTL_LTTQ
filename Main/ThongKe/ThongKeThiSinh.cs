@@ -38,17 +38,21 @@ namespace BTL_ThiSinhThiDaiHoc
 			{
 				cbbPhongthi.Items.Add(i["MaPhongThi"].ToString());
 			}
-			dgvHienThi.DataSource = null;
+			dgvHienThi.DataSource = md.LoadData("Select a.SoHoSo, a.Ho, a.Ten, a.NgaySinh, a.GioiTinh, b.TenQue, c.TenKhuVuc, d.TenUuTien, " +
+				"e.TenDoiTuong, f.TenNguyenVong, a.SoBD, a.GhiChu From HoSoThiSinh a inner join QueQuan b on a.MaQue = b.MaQue " +
+				"inner join KhuVuc c on a.MaKhuVuc = c.MaKhuVuc inner join UuTien d on a.MaUuTien = d.MaUuTien inner join DoiTuong e" +
+				" on a.MaDoiTuong = e.MaDoiTuong inner join NguyenVong f on a.MaNguyenVong = f.MaNguyenVong inner join Phongthi_ThiSinh g on a.SoBD = g.SoBD" +
+				" Where g.MaPhongThi = ''");
 			btnXuat.Enabled = false;
 		}
 
 		private void cbbPhongthi_SelectedIndexChanged(object sender, EventArgs e)
 		{
-			DataTable dt = md.LoadData("Select a.SoHoSo, a.Ho, a.Ten, a.NgaySinh, a.GioiTinh, b.TenQue, c.TenKhuVuc, d.TenUuTien, " +
-				"e.TenDoiTuong, f.TenNguyenVong, a.SoBD, a.GhiChu From HoSoThiSinh a inner join QueQuan b on a.MaQue = b.MaQue " +
+			DataTable dt = md.LoadData("Select a.SoHoSo, a.SoBD, a.Ho, a.Ten, a.NgaySinh, Case WHEN a.GioiTinh = 1 THEN N'Nam' WHEN a.GioiTinh = 0 THEN N'Nữ' " +
+				"End As GioiTinh, b.TenQue, c.TenKhuVuc, d.TenUuTien, e.TenDoiTuong, f.TenNguyenVong, a.GhiChu From HoSoThiSinh a inner join QueQuan b on a.MaQue = b.MaQue " +
 				"inner join KhuVuc c on a.MaKhuVuc = c.MaKhuVuc inner join UuTien d on a.MaUuTien = d.MaUuTien inner join DoiTuong e" +
 				" on a.MaDoiTuong = e.MaDoiTuong inner join NguyenVong f on a.MaNguyenVong = f.MaNguyenVong inner join Phongthi_ThiSinh g on a.SoBD = g.SoBD" +
-				" Where g.MaPhongThi = " + cbbPhongthi.SelectedItem.ToString());
+				" Where g.MaPhongThi = " + cbbPhongthi.SelectedItem.ToString() + " Order by Cast(a.SoBD as int) ASC");
 			dgvHienThi.DataSource = dt;
 			btnXuat.Enabled = true;
 		}
@@ -62,38 +66,55 @@ namespace BTL_ThiSinhThiDaiHoc
 			tenvung.Font.Name = "Arial"; tenvung.Font.Size = 16;
 			tenvung.Font.Color = Color.Red;
 			tenvung.Value = "DANH SÁCH THÍ SINH PHÒNG THI " + cbbPhongthi.SelectedItem.ToString();
-			exSheet.get_Range("A1:C1").Merge(true);
+			exSheet.get_Range("A1:M1").Merge(true);
 
-
-			exSheet.get_Range("A2:G2").Font.Size = 14;
-			exSheet.get_Range("A2:G2").Font.Bold = true;
+			exSheet.get_Range("A2:M2").Font.Size = 14;
+			exSheet.get_Range("A2:M2").Font.Bold = true;
 			exSheet.get_Range("A2").Value = "STT";
 			exSheet.get_Range("B2").Value = "Số hồ sơ";
-			exSheet.get_Range("C2").Value = "Họ";
-			exSheet.get_Range("D2").Value = "Tên";
-			exSheet.get_Range("E2").Value = "Giới tính";
+			exSheet.get_Range("C2").Value = "Số báo danh";
+			exSheet.get_Range("D2").Value = "Họ";
+			exSheet.get_Range("E2").Value = "Tên";
 			exSheet.get_Range("F2").Value = "Ngày sinh";
-			exSheet.get_Range("G2").Value = "Số báo danh";
-			exSheet.get_Range("A2:G2").HorizontalAlignment = Excel.XlHAlign.xlHAlignCenter;
+			exSheet.get_Range("G2").Value = "Giới tính";
+			exSheet.get_Range("H2").Value = "Quê quán";
+			exSheet.get_Range("I2").Value = "Khu vực";
+			exSheet.get_Range("J2").Value = "Ưu tiên";
+			exSheet.get_Range("K2").Value = "Đối tượng";
+			exSheet.get_Range("L2").Value = "Nguyện vọng";
+			exSheet.get_Range("M2").Value = "Ghi chú";
+			exSheet.get_Range("A2:M2").HorizontalAlignment = Excel.XlHAlign.xlHAlignCenter;
 
 			int k = dgvHienThi.Rows.Count;
-			exSheet.get_Range("A2:G" + (k + 2).ToString()).HorizontalAlignment = Excel.XlHAlign.xlHAlignCenter;
+			exSheet.get_Range("A2:M" + (k + 2).ToString()).HorizontalAlignment = Excel.XlHAlign.xlHAlignCenter;
 			exSheet.Columns["A"].ColumnWidth = 9;
-			exSheet.Columns["B"].ColumnWidth = 15;
-			exSheet.Columns["C"].ColumnWidth = 20;
-			exSheet.Columns["D"].ColumnWidth = 20;
+			exSheet.Columns["B"].ColumnWidth = 12;
+			exSheet.Columns["C"].ColumnWidth = 16;
+			exSheet.Columns["D"].ColumnWidth = 15;
 			exSheet.Columns["E"].ColumnWidth = 15;
-			exSheet.Columns["F"].ColumnWidth = 15;
+			exSheet.Columns["F"].ColumnWidth = 18;
 			exSheet.Columns["G"].ColumnWidth = 15;
+			exSheet.Columns["H"].ColumnWidth = 15;
+			exSheet.Columns["I"].ColumnWidth = 15;
+			exSheet.Columns["J"].ColumnWidth = 28;
+			exSheet.Columns["K"].ColumnWidth = 28;
+			exSheet.Columns["L"].ColumnWidth = 25;
+			exSheet.Columns["M"].ColumnWidth = 15;
 			for (int i = 0; i < dgvHienThi.Rows.Count; i++)
 			{
 				exSheet.get_Range("A" + (3 + i).ToString()).Value = (i + 1).ToString();
-				exSheet.get_Range("B" + (3 + i).ToString()).Value = dgvHienThi.Rows[i].Cells[1].Value.ToString();
-				exSheet.get_Range("C" + (3 + i).ToString()).Value = dgvHienThi.Rows[i].Cells[2].Value.ToString();
-				exSheet.get_Range("D" + (3 + i).ToString()).Value = dgvHienThi.Rows[i].Cells[3].Value.ToString();
-				exSheet.get_Range("E" + (3 + i).ToString()).Value = dgvHienThi.Rows[i].Cells[4].Value.ToString();
-				exSheet.get_Range("F" + (3 + i).ToString()).Value = dgvHienThi.Rows[i].Cells[5].Value.ToString();
-				exSheet.get_Range("G" + (3 + i).ToString()).Value = dgvHienThi.Rows[i].Cells[6].Value.ToString();
+				exSheet.get_Range("B" + (3 + i).ToString()).Value = dgvHienThi.Rows[i].Cells[0].Value.ToString();
+				exSheet.get_Range("C" + (3 + i).ToString()).Value = dgvHienThi.Rows[i].Cells[1].Value.ToString();
+				exSheet.get_Range("D" + (3 + i).ToString()).Value = dgvHienThi.Rows[i].Cells[2].Value.ToString();
+				exSheet.get_Range("E" + (3 + i).ToString()).Value = dgvHienThi.Rows[i].Cells[3].Value.ToString();
+				exSheet.get_Range("F" + (3 + i).ToString()).Value = dgvHienThi.Rows[i].Cells[4].Value.ToString();
+				exSheet.get_Range("G" + (3 + i).ToString()).Value = dgvHienThi.Rows[i].Cells[5].Value.ToString();
+				exSheet.get_Range("H" + (3 + i).ToString()).Value = dgvHienThi.Rows[i].Cells[6].Value.ToString();
+				exSheet.get_Range("I" + (3 + i).ToString()).Value = dgvHienThi.Rows[i].Cells[7].Value.ToString();
+				exSheet.get_Range("J" + (3 + i).ToString()).Value = dgvHienThi.Rows[i].Cells[8].Value.ToString();
+				exSheet.get_Range("K" + (3 + i).ToString()).Value = dgvHienThi.Rows[i].Cells[9].Value.ToString();
+				exSheet.get_Range("L" + (3 + i).ToString()).Value = dgvHienThi.Rows[i].Cells[10].Value.ToString();
+				exSheet.get_Range("M" + (3 + i).ToString()).Value = dgvHienThi.Rows[i].Cells[11].Value.ToString();
 			}
 			exBook.Activate();
 			SaveFileDialog svf = new SaveFileDialog();
@@ -129,41 +150,62 @@ namespace BTL_ThiSinhThiDaiHoc
 				tenvung.Font.Size = 16;
 				tenvung.Font.Color = Color.Red;
 				tenvung.Value = "DANH SÁCH THÍ SINH PHÒNG THI " + item["MaPhongThi"].ToString();
-				exSheet.get_Range("A1:E1").Merge(true);
+				exSheet.get_Range("A1:M1").Merge(true);
 
-				exSheet.get_Range("A2:G2").Font.Size = 14;
-				exSheet.get_Range("A2:G2").Font.Bold = true;
+				exSheet.get_Range("A2:M2").Font.Size = 14;
+				exSheet.get_Range("A2:M2").Font.Bold = true;
 				exSheet.get_Range("A2").Value = "STT";
 				exSheet.get_Range("B2").Value = "Số hồ sơ";
-				exSheet.get_Range("C2").Value = "Họ";
-				exSheet.get_Range("D2").Value = "Tên";
-				exSheet.get_Range("E2").Value = "Giới tính";
+				exSheet.get_Range("C2").Value = "Số báo danh";
+				exSheet.get_Range("D2").Value = "Họ";
+				exSheet.get_Range("E2").Value = "Tên";
 				exSheet.get_Range("F2").Value = "Ngày sinh";
-				exSheet.get_Range("G2").Value = "Số báo danh";
-				exSheet.get_Range("A2:G2").HorizontalAlignment = Excel.XlHAlign.xlHAlignCenter;
+				exSheet.get_Range("G2").Value = "Giới tính";
+				exSheet.get_Range("H2").Value = "Quê quán";
+				exSheet.get_Range("I2").Value = "Khu vực";
+				exSheet.get_Range("J2").Value = "Ưu tiên";
+				exSheet.get_Range("K2").Value = "Đối tượng";
+				exSheet.get_Range("L2").Value = "Nguyện vọng";
+				exSheet.get_Range("M2").Value = "Ghi chú";
+				exSheet.get_Range("A2:M2").HorizontalAlignment = Excel.XlHAlign.xlHAlignCenter;
 
-				DataTable tb = md.LoadData("Select b.MaPhongThi, a.SoHoSo, a.Ho, a.Ten, Case WHEN a.GioiTinh = 1 THEN N'Nam' WHEN a.GioiTinh = 0 THEN N'Nữ' " +
-				"End As GioiTinh, a.NgaySinh, a.SoBD From HoSoThiSinh a inner join Phongthi_ThiSinh b on a.SoBD = b.SoBD" +
-				" Where b.MaPhongThi = " + item["MaPhongThi"].ToString());
+				DataTable tb = md.LoadData("Select a.SoHoSo, a.SoBD, a.Ho, a.Ten, a.NgaySinh, Case WHEN a.GioiTinh = 1 THEN N'Nam' WHEN a.GioiTinh = 0 THEN N'Nữ' " +
+				"End As GioiTinh, b.TenQue, c.TenKhuVuc, d.TenUuTien, e.TenDoiTuong, f.TenNguyenVong, a.GhiChu From HoSoThiSinh a inner join QueQuan b on a.MaQue = b.MaQue " +
+				"inner join KhuVuc c on a.MaKhuVuc = c.MaKhuVuc inner join UuTien d on a.MaUuTien = d.MaUuTien inner join DoiTuong e" +
+				" on a.MaDoiTuong = e.MaDoiTuong inner join NguyenVong f on a.MaNguyenVong = f.MaNguyenVong inner join Phongthi_ThiSinh g on a.SoBD = g.SoBD" +
+				" Where g.MaPhongThi = " + item["MaPhongThi"].ToString() + " Order by Cast(a.SoBD as int) ASC");
+
 				int k = tb.Rows.Count;
-				exSheet.get_Range("A2:G" + (k + 2).ToString()).HorizontalAlignment = Excel.XlHAlign.xlHAlignCenter;
+				exSheet.get_Range("A2:M" + (k + 2).ToString()).HorizontalAlignment = Excel.XlHAlign.xlHAlignCenter;
 				exSheet.Columns["A"].ColumnWidth = 9;
-				exSheet.Columns["B"].ColumnWidth = 15;
-				exSheet.Columns["C"].ColumnWidth = 20;
-				exSheet.Columns["D"].ColumnWidth = 20;
+				exSheet.Columns["B"].ColumnWidth = 12;
+				exSheet.Columns["C"].ColumnWidth = 16;
+				exSheet.Columns["D"].ColumnWidth = 15;
 				exSheet.Columns["E"].ColumnWidth = 15;
-				exSheet.Columns["F"].ColumnWidth = 15;
+				exSheet.Columns["F"].ColumnWidth = 18;
 				exSheet.Columns["G"].ColumnWidth = 15;
+				exSheet.Columns["H"].ColumnWidth = 15;
+				exSheet.Columns["I"].ColumnWidth = 15;
+				exSheet.Columns["J"].ColumnWidth = 28;
+				exSheet.Columns["K"].ColumnWidth = 28;
+				exSheet.Columns["L"].ColumnWidth = 25;
+				exSheet.Columns["M"].ColumnWidth = 15;
 
 				for (int i = 0; i < tb.Rows.Count; i++)
 				{
 					exSheet.get_Range("A" + (3 + i).ToString()).Value = (i + 1).ToString();
-					exSheet.get_Range("B" + (3 + i).ToString()).Value = tb.Rows[i][1].ToString();
-					exSheet.get_Range("C" + (3 + i).ToString()).Value = tb.Rows[i][2].ToString();
-					exSheet.get_Range("D" + (3 + i).ToString()).Value = tb.Rows[i][3].ToString();
-					exSheet.get_Range("E" + (3 + i).ToString()).Value = tb.Rows[i][4].ToString();
-					exSheet.get_Range("F" + (3 + i).ToString()).Value = tb.Rows[i][5].ToString();
-					exSheet.get_Range("G" + (3 + i).ToString()).Value = tb.Rows[i][6].ToString();
+					exSheet.get_Range("B" + (3 + i).ToString()).Value = tb.Rows[i][0].ToString();
+					exSheet.get_Range("C" + (3 + i).ToString()).Value = tb.Rows[i][1].ToString();
+					exSheet.get_Range("D" + (3 + i).ToString()).Value = tb.Rows[i][2].ToString();
+					exSheet.get_Range("E" + (3 + i).ToString()).Value = tb.Rows[i][3].ToString();
+					exSheet.get_Range("F" + (3 + i).ToString()).Value = tb.Rows[i][4].ToString();
+					exSheet.get_Range("G" + (3 + i).ToString()).Value = tb.Rows[i][5].ToString();
+					exSheet.get_Range("H" + (3 + i).ToString()).Value = tb.Rows[i][6].ToString();
+					exSheet.get_Range("I" + (3 + i).ToString()).Value = tb.Rows[i][7].ToString();
+					exSheet.get_Range("J" + (3 + i).ToString()).Value = tb.Rows[i][8].ToString();
+					exSheet.get_Range("K" + (3 + i).ToString()).Value = tb.Rows[i][9].ToString();
+					exSheet.get_Range("L" + (3 + i).ToString()).Value = tb.Rows[i][10].ToString();
+					exSheet.get_Range("M" + (3 + i).ToString()).Value = tb.Rows[i][11].ToString();
 				}
 			}
 

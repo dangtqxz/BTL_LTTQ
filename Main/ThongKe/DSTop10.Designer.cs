@@ -39,12 +39,12 @@
 			this.btnRefresh = new Guna.UI2.WinForms.Guna2GradientButton();
 			this.dgvHienThi = new Guna.UI2.WinForms.Guna2DataGridView();
 			this.SoHoSo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.SoBD = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.Ho = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.Ten = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.NgaySinh = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.GioiTinh = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.TenQue = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.SoBD = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.DiemMon1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.DiemMon2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.DiemMon3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -185,12 +185,12 @@
 			this.dgvHienThi.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
 			this.dgvHienThi.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.SoHoSo,
+            this.SoBD,
             this.Ho,
             this.Ten,
             this.NgaySinh,
             this.GioiTinh,
             this.TenQue,
-            this.SoBD,
             this.DiemMon1,
             this.DiemMon2,
             this.DiemMon3,
@@ -246,6 +246,14 @@
 			this.SoHoSo.Name = "SoHoSo";
 			this.SoHoSo.ReadOnly = true;
 			// 
+			// SoBD
+			// 
+			this.SoBD.DataPropertyName = "SoBD";
+			this.SoBD.HeaderText = "Số báo danh";
+			this.SoBD.MinimumWidth = 150;
+			this.SoBD.Name = "SoBD";
+			this.SoBD.ReadOnly = true;
+			// 
 			// Ho
 			// 
 			this.Ho.DataPropertyName = "Ho";
@@ -285,14 +293,6 @@
 			this.TenQue.MinimumWidth = 100;
 			this.TenQue.Name = "TenQue";
 			this.TenQue.ReadOnly = true;
-			// 
-			// SoBD
-			// 
-			this.SoBD.DataPropertyName = "SoBD";
-			this.SoBD.HeaderText = "Số báo danh";
-			this.SoBD.MinimumWidth = 150;
-			this.SoBD.Name = "SoBD";
-			this.SoBD.ReadOnly = true;
 			// 
 			// DiemMon1
 			// 
@@ -362,12 +362,12 @@
 		private Guna.UI2.WinForms.Guna2GradientButton btnRefresh;
 		private Guna.UI2.WinForms.Guna2DataGridView dgvHienThi;
 		private System.Windows.Forms.DataGridViewTextBoxColumn SoHoSo;
+		private System.Windows.Forms.DataGridViewTextBoxColumn SoBD;
 		private System.Windows.Forms.DataGridViewTextBoxColumn Ho;
 		private System.Windows.Forms.DataGridViewTextBoxColumn Ten;
 		private System.Windows.Forms.DataGridViewTextBoxColumn NgaySinh;
 		private System.Windows.Forms.DataGridViewTextBoxColumn GioiTinh;
 		private System.Windows.Forms.DataGridViewTextBoxColumn TenQue;
-		private System.Windows.Forms.DataGridViewTextBoxColumn SoBD;
 		private System.Windows.Forms.DataGridViewTextBoxColumn DiemMon1;
 		private System.Windows.Forms.DataGridViewTextBoxColumn DiemMon2;
 		private System.Windows.Forms.DataGridViewTextBoxColumn DiemMon3;

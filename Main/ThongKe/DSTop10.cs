@@ -38,19 +38,24 @@ namespace BTL_ThiSinhThiDaiHoc
 			{
 				cbbNguyenVong.Items.Add(i["TenNguyenVong"].ToString());
 			}
-			dgvHienThi.DataSource = null;
+			dgvHienThi.DataSource = md.LoadData("Select Top 10 a.SoHoSo, a.Ho, a.Ten, a.NgaySinh, Case WHEN a.GioiTinh = 1 THEN N'Nam' WHEN a.GioiTinh = 0 THEN N'Nữ' " +
+				"End As GioiTinh, b.TenQue, a.SoBD, h.DiemMon1, h.DiemMon2, h.DiemMon3, (c.DiemCong+d.DiemUuTien+e.DiemCong) As DiemCong, " +
+				"(h.DiemMon1+h.DiemMon2+h.DiemMon3+c.DiemCong+d.DiemUuTien+e.DiemCong) As TongDiem From HoSoThiSinh a inner join QueQuan b on a.MaQue = b.MaQue " +
+				"inner join KhuVuc c on a.MaKhuVuc = c.MaKhuVuc inner join UuTien d on a.MaUuTien = d.MaUuTien inner join DoiTuong e on a.MaDoiTuong = e.MaDoiTuong " +
+				"inner join NguyenVong f on a.MaNguyenVong = f.MaNguyenVong inner join DiemThi h on a.SoBD = h.SoBD " +
+				"Where a.MaNguyenVong = '' Order by TongDiem DESC");
 			btnXuat.Enabled = false;
 		}
 
 		private void cbbNguyenVong_SelectedIndexChanged(object sender, EventArgs e)
 		{
 			string ma = layma(cbbNguyenVong.Text.ToString());
-			DataTable dt = md.LoadData("Select Top 10 a.SoHoSo, a.Ho, a.Ten, a.NgaySinh, Case WHEN a.GioiTinh = 1 THEN N'Nam' WHEN a.GioiTinh = 0 THEN N'Nữ' " +
-				"End As GioiTinh, b.TenQue, a.SoBD, h.DiemMon1, h.DiemMon2, h.DiemMon3, (c.DiemCong+d.DiemUuTien+e.DiemCong) As DiemCong, " +
+			DataTable dt = md.LoadData("Select Top 10 a.SoHoSo, a.SoBD, a.Ho, a.Ten, a.NgaySinh, Case WHEN a.GioiTinh = 1 THEN N'Nam' WHEN a.GioiTinh = 0 THEN N'Nữ' " +
+				"End As GioiTinh, b.TenQue, h.DiemMon1, h.DiemMon2, h.DiemMon3, (c.DiemCong+d.DiemUuTien+e.DiemCong) As DiemCong, " +
 				"(h.DiemMon1+h.DiemMon2+h.DiemMon3+c.DiemCong+d.DiemUuTien+e.DiemCong) As TongDiem From HoSoThiSinh a inner join QueQuan b on a.MaQue = b.MaQue " +
 				"inner join KhuVuc c on a.MaKhuVuc = c.MaKhuVuc inner join UuTien d on a.MaUuTien = d.MaUuTien inner join DoiTuong e on a.MaDoiTuong = e.MaDoiTuong " +
 				"inner join NguyenVong f on a.MaNguyenVong = f.MaNguyenVong inner join DiemThi h on a.SoBD = h.SoBD " +
-				"Where a.MaNguyenVong = '" + ma + "' Order by TongDiem DESC");
+				"Where a.MaNguyenVong = '" + ma + "' Order by TongDiem DESC, (h.DiemMon1+h.DiemMon2+h.DiemMon3) DESC");
 			dgvHienThi.DataSource = dt;
 			if (dt.Rows.Count > 0)
 			{
@@ -78,11 +83,11 @@ namespace BTL_ThiSinhThiDaiHoc
 			tenvung.Font.Name = "Arial"; tenvung.Font.Size = 16;
 			tenvung.Font.Color = Color.Red;
 			tenvung.Value = "DANH SÁCH TOP 10 THÍ SINH " + cbbNguyenVong.SelectedItem.ToString();
-			exSheet.get_Range("A1:E1").Merge(true);
+			exSheet.get_Range("A1:M1").Merge(true);
 
 
-			exSheet.get_Range("A2:G2").Font.Size = 14;
-			exSheet.get_Range("A2:G2").Font.Bold = true;
+			exSheet.get_Range("A2:M2").Font.Size = 14;
+			exSheet.get_Range("A2:M2").Font.Bold = true;
 			exSheet.get_Range("A2").Value = "STT";
 			exSheet.get_Range("B2").Value = "Số hồ sơ";
 			exSheet.get_Range("C2").Value = "Số báo danh";
@@ -90,11 +95,16 @@ namespace BTL_ThiSinhThiDaiHoc
 			exSheet.get_Range("E2").Value = "Tên";
 			exSheet.get_Range("F2").Value = "Ngày sinh";
 			exSheet.get_Range("G2").Value = "Giới tính";
-			exSheet.get_Range("H2").Value = "Tổng điểm";
-			exSheet.get_Range("A2:H2").HorizontalAlignment = Excel.XlHAlign.xlHAlignCenter;
+			exSheet.get_Range("H2").Value = "Quê quán";
+			exSheet.get_Range("I2").Value = "Điểm môn 1";
+			exSheet.get_Range("J2").Value = "Điểm môn 2";
+			exSheet.get_Range("K2").Value = "Điểm môn 3";
+			exSheet.get_Range("L2").Value = "Điểm cộng";
+			exSheet.get_Range("M2").Value = "Tổng điểm";
+			exSheet.get_Range("A2:M2").HorizontalAlignment = Excel.XlHAlign.xlHAlignCenter;
 
 			int k = dgvHienThi.Rows.Count;
-			exSheet.get_Range("A2:H" + (k + 2).ToString()).HorizontalAlignment = Excel.XlHAlign.xlHAlignCenter;
+			exSheet.get_Range("A2:M" + (k + 2).ToString()).HorizontalAlignment = Excel.XlHAlign.xlHAlignCenter;
 			exSheet.Columns["A"].ColumnWidth = 9;
 			exSheet.Columns["B"].ColumnWidth = 15;
 			exSheet.Columns["C"].ColumnWidth = 20;
@@ -103,6 +113,11 @@ namespace BTL_ThiSinhThiDaiHoc
 			exSheet.Columns["F"].ColumnWidth = 15;
 			exSheet.Columns["G"].ColumnWidth = 15;
 			exSheet.Columns["H"].ColumnWidth = 15;
+			exSheet.Columns["I"].ColumnWidth = 15;
+			exSheet.Columns["J"].ColumnWidth = 15;
+			exSheet.Columns["K"].ColumnWidth = 15;
+			exSheet.Columns["L"].ColumnWidth = 15;
+			exSheet.Columns["M"].ColumnWidth = 15;
 			for (int i = 0; i < dgvHienThi.Rows.Count; i++)
 			{
 				exSheet.get_Range("A" + (3 + i).ToString()).Value = (i + 1).ToString();
@@ -113,6 +128,11 @@ namespace BTL_ThiSinhThiDaiHoc
 				exSheet.get_Range("F" + (3 + i).ToString()).Value = dgvHienThi.Rows[i].Cells[4].Value.ToString();
 				exSheet.get_Range("G" + (3 + i).ToString()).Value = dgvHienThi.Rows[i].Cells[5].Value.ToString();
 				exSheet.get_Range("H" + (3 + i).ToString()).Value = dgvHienThi.Rows[i].Cells[6].Value.ToString();
+				exSheet.get_Range("I" + (3 + i).ToString()).Value = dgvHienThi.Rows[i].Cells[7].Value.ToString();
+				exSheet.get_Range("J" + (3 + i).ToString()).Value = dgvHienThi.Rows[i].Cells[8].Value.ToString();
+				exSheet.get_Range("K" + (3 + i).ToString()).Value = dgvHienThi.Rows[i].Cells[9].Value.ToString();
+				exSheet.get_Range("L" + (3 + i).ToString()).Value = dgvHienThi.Rows[i].Cells[10].Value.ToString();
+				exSheet.get_Range("M" + (3 + i).ToString()).Value = dgvHienThi.Rows[i].Cells[11].Value.ToString();
 			}
 			exBook.Activate();
 			SaveFileDialog svf = new SaveFileDialog();
@@ -148,10 +168,10 @@ namespace BTL_ThiSinhThiDaiHoc
 				tenvung.Font.Size = 16;
 				tenvung.Font.Color = Color.Red;
 				tenvung.Value = "DANH SÁCH TOP 10  " + item["TenNguyenVong"].ToString();
-				exSheet.get_Range("A1:H1").Merge(true);
+				exSheet.get_Range("A1:M1").Merge(true);
 
-				exSheet.get_Range("A2:G2").Font.Size = 14;
-				exSheet.get_Range("A2:G2").Font.Bold = true;
+				exSheet.get_Range("A2:M2").Font.Size = 14;
+				exSheet.get_Range("A2:M2").Font.Bold = true;
 				exSheet.get_Range("A2").Value = "STT";
 				exSheet.get_Range("B2").Value = "Số hồ sơ";
 				exSheet.get_Range("C2").Value = "Số báo danh";
@@ -159,16 +179,23 @@ namespace BTL_ThiSinhThiDaiHoc
 				exSheet.get_Range("E2").Value = "Tên";
 				exSheet.get_Range("F2").Value = "Ngày sinh";
 				exSheet.get_Range("G2").Value = "Giới tính";
-				exSheet.get_Range("H2").Value = "Tổng điểm";
-				exSheet.get_Range("A2:H2").HorizontalAlignment = Excel.XlHAlign.xlHAlignCenter;
-
+				exSheet.get_Range("H2").Value = "Quê quán";
+				exSheet.get_Range("I2").Value = "Điểm môn 1";
+				exSheet.get_Range("J2").Value = "Điểm môn 2";
+				exSheet.get_Range("K2").Value = "Điểm môn 3";
+				exSheet.get_Range("L2").Value = "Điểm cộng";
+				exSheet.get_Range("M2").Value = "Tổng điểm";
+				exSheet.get_Range("A2:M2").HorizontalAlignment = Excel.XlHAlign.xlHAlignCenter;
+				
 				string ma = item["MaNguyenVong"].ToString();
-				DataTable tb = md.LoadData("Select Top 10 a.SoHoSo, a.SoBD, a.Ho, a.Ten, a.NgaySinh, Case WHEN a.GioiTinh = 1 THEN N'Nam'" +
-					" WHEN a.GioiTinh = 0 THEN N'Nữ' End As GioiTinh, (c.DiemMon1+c.DiemMon2+c.DiemMon3) As TongDiem From HoSoThiSinh a" +
-					" inner join NguyenVong b on a.MaNguyenVong = b.MaNguyenVong inner join DiemThi c on a.SoBD = c.SoBD " +
-					"Where a.MaNguyenVong = '" + ma + "' Order by TongDiem DESC");
+				DataTable tb = md.LoadData("Select Top 10 a.SoHoSo, a.SoBD, a.Ho, a.Ten, a.NgaySinh, Case WHEN a.GioiTinh = 1 THEN N'Nam' WHEN a.GioiTinh = 0 THEN N'Nữ' " +
+					"End As GioiTinh, b.TenQue, h.DiemMon1, h.DiemMon2, h.DiemMon3, (c.DiemCong+d.DiemUuTien+e.DiemCong) As DiemCong, " +
+					"(h.DiemMon1+h.DiemMon2+h.DiemMon3+c.DiemCong+d.DiemUuTien+e.DiemCong) As TongDiem From HoSoThiSinh a inner join QueQuan b on a.MaQue = b.MaQue " +
+					"inner join KhuVuc c on a.MaKhuVuc = c.MaKhuVuc inner join UuTien d on a.MaUuTien = d.MaUuTien inner join DoiTuong e on a.MaDoiTuong = e.MaDoiTuong " +
+					"inner join NguyenVong f on a.MaNguyenVong = f.MaNguyenVong inner join DiemThi h on a.SoBD = h.SoBD " +
+					"Where a.MaNguyenVong = '" + ma + "' Order by TongDiem DESC, (h.DiemMon1+h.DiemMon2+h.DiemMon3) DESC");
 				int k = tb.Rows.Count;
-				exSheet.get_Range("A2:H" + (k + 2).ToString()).HorizontalAlignment = Excel.XlHAlign.xlHAlignCenter;
+				exSheet.get_Range("A2:M" + (k + 2).ToString()).HorizontalAlignment = Excel.XlHAlign.xlHAlignCenter;
 				exSheet.Columns["A"].ColumnWidth = 9;
 				exSheet.Columns["B"].ColumnWidth = 15;
 				exSheet.Columns["C"].ColumnWidth = 20;
@@ -177,7 +204,12 @@ namespace BTL_ThiSinhThiDaiHoc
 				exSheet.Columns["F"].ColumnWidth = 15;
 				exSheet.Columns["G"].ColumnWidth = 15;
 				exSheet.Columns["H"].ColumnWidth = 15;
-				
+				exSheet.Columns["I"].ColumnWidth = 15;
+				exSheet.Columns["J"].ColumnWidth = 15;
+				exSheet.Columns["K"].ColumnWidth = 15;
+				exSheet.Columns["L"].ColumnWidth = 15;
+				exSheet.Columns["M"].ColumnWidth = 15;
+
 				for (int i = 0; i < tb.Rows.Count; i++)
 				{
 					exSheet.get_Range("A" + (3 + i).ToString()).Value = (i + 1).ToString();
@@ -188,6 +220,11 @@ namespace BTL_ThiSinhThiDaiHoc
 					exSheet.get_Range("F" + (3 + i).ToString()).Value = tb.Rows[i][4].ToString();
 					exSheet.get_Range("G" + (3 + i).ToString()).Value = tb.Rows[i][5].ToString();
 					exSheet.get_Range("H" + (3 + i).ToString()).Value = tb.Rows[i][6].ToString();
+					exSheet.get_Range("I" + (3 + i).ToString()).Value = tb.Rows[i][7].ToString();
+					exSheet.get_Range("J" + (3 + i).ToString()).Value = tb.Rows[i][8].ToString();
+					exSheet.get_Range("K" + (3 + i).ToString()).Value = tb.Rows[i][9].ToString();
+					exSheet.get_Range("L" + (3 + i).ToString()).Value = tb.Rows[i][10].ToString();
+					exSheet.get_Range("M" + (3 + i).ToString()).Value = tb.Rows[i][11].ToString();
 				}
 			}
 
