@@ -61,22 +61,22 @@ namespace BTL_ThiSinhThiDaiHoc
 			return null;
 		}
 
-		private void btnRefresh_Click(object sender, EventArgs e)
-		{
-			cbbNguyenVong.Items.Clear();
-			DataTable dt = md.LoadData("Select Distinct TenNguyenVong From NguyenVong");
-			foreach (DataRow i in dt.Rows)
-			{
-				cbbNguyenVong.Items.Add(i["TenNguyenVong"].ToString());
-			}
-			dgvHienThi.DataSource = md.LoadData("Select a.SoHoSo, a.SoBD, a.Ho, a.Ten, Case WHEN a.GioiTinh = 1 THEN N'Nam' WHEN a.GioiTinh = 0 THEN N'Nữ' " +
-				"End As GioiTinh, a.NgaySinh, b.TenQue,  h.DiemMon1, h.DiemMon2, h.DiemMon3, (c.DiemCong+d.DiemUuTien+e.DiemCong) As DiemCong, " +
-				"(h.DiemMon1+h.DiemMon2+h.DiemMon3+c.DiemCong+d.DiemUuTien+e.DiemCong) As TongDiem From HoSoThiSinh a inner join QueQuan b on a.MaQue = b.MaQue " +
-				"inner join KhuVuc c on a.MaKhuVuc = c.MaKhuVuc inner join UuTien d on a.MaUuTien = d.MaUuTien inner join DoiTuong e on a.MaDoiTuong = e.MaDoiTuong " +
-				"inner join NguyenVong f on a.MaNguyenVong = f.MaNguyenVong inner join DiemThi h on a.SoBD = h.SoBD inner join DiemChuan g on a.MaNguyenVong = g.MaNguyenVong " +
-				"Where a.MaNguyenVong = '' and (h.DiemMon1+h.DiemMon2+h.DiemMon3+c.DiemCong+d.DiemUuTien+e.DiemCong) >= g.DiemChuan Order by TongDiem DESC, (h.DiemMon1+h.DiemMon2+h.DiemMon3) DESC");
-			btnXuat.Enabled = false;
-		}
+		//private void btnRefresh_Click(object sender, EventArgs e)
+		//{
+		//	cbbNguyenVong.Items.Clear();
+		//	DataTable dt = md.LoadData("Select Distinct TenNguyenVong From NguyenVong");
+		//	foreach (DataRow i in dt.Rows)
+		//	{
+		//		cbbNguyenVong.Items.Add(i["TenNguyenVong"].ToString());
+		//	}
+		//	dgvHienThi.DataSource = md.LoadData("Select a.SoHoSo, a.SoBD, a.Ho, a.Ten, Case WHEN a.GioiTinh = 1 THEN N'Nam' WHEN a.GioiTinh = 0 THEN N'Nữ' " +
+		//		"End As GioiTinh, a.NgaySinh, b.TenQue,  h.DiemMon1, h.DiemMon2, h.DiemMon3, (c.DiemCong+d.DiemUuTien+e.DiemCong) As DiemCong, " +
+		//		"(h.DiemMon1+h.DiemMon2+h.DiemMon3+c.DiemCong+d.DiemUuTien+e.DiemCong) As TongDiem From HoSoThiSinh a inner join QueQuan b on a.MaQue = b.MaQue " +
+		//		"inner join KhuVuc c on a.MaKhuVuc = c.MaKhuVuc inner join UuTien d on a.MaUuTien = d.MaUuTien inner join DoiTuong e on a.MaDoiTuong = e.MaDoiTuong " +
+		//		"inner join NguyenVong f on a.MaNguyenVong = f.MaNguyenVong inner join DiemThi h on a.SoBD = h.SoBD inner join DiemChuan g on a.MaNguyenVong = g.MaNguyenVong " +
+		//		"Where a.MaNguyenVong = '' and (h.DiemMon1+h.DiemMon2+h.DiemMon3+c.DiemCong+d.DiemUuTien+e.DiemCong) >= g.DiemChuan Order by TongDiem DESC, (h.DiemMon1+h.DiemMon2+h.DiemMon3) DESC");
+		//	btnXuat.Enabled = false;
+		//}
 
 		private void btnXuat_Click(object sender, EventArgs e)
 		{

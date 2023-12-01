@@ -30,21 +30,21 @@ namespace BTL_ThiSinhThiDaiHoc
 			btnXuat.Enabled = false;
 		}
 
-		private void btnRefresh_Click(object sender, EventArgs e)
-		{
-			cbbPhongthi.Items.Clear();
-			DataTable dt = md.LoadData("Select Distinct MaPhongThi From PhongThi_ThiSinh");
-			foreach (DataRow i in dt.Rows)
-			{
-				cbbPhongthi.Items.Add(i["MaPhongThi"].ToString());
-			}
-			dgvHienThi.DataSource = md.LoadData("Select a.SoHoSo, a.Ho, a.Ten, a.NgaySinh, a.GioiTinh, b.TenQue, c.TenKhuVuc, d.TenUuTien, " +
-				"e.TenDoiTuong, f.TenNguyenVong, a.SoBD, a.GhiChu From HoSoThiSinh a inner join QueQuan b on a.MaQue = b.MaQue " +
-				"inner join KhuVuc c on a.MaKhuVuc = c.MaKhuVuc inner join UuTien d on a.MaUuTien = d.MaUuTien inner join DoiTuong e" +
-				" on a.MaDoiTuong = e.MaDoiTuong inner join NguyenVong f on a.MaNguyenVong = f.MaNguyenVong inner join Phongthi_ThiSinh g on a.SoBD = g.SoBD" +
-				" Where g.MaPhongThi = ''");
-			btnXuat.Enabled = false;
-		}
+		//private void btnRefresh_Click(object sender, EventArgs e)
+		//{
+		//	cbbPhongthi.Items.Clear();
+		//	DataTable dt = md.LoadData("Select Distinct MaPhongThi From PhongThi_ThiSinh");
+		//	foreach (DataRow i in dt.Rows)
+		//	{
+		//		cbbPhongthi.Items.Add(i["MaPhongThi"].ToString());
+		//	}
+		//	dgvHienThi.DataSource = md.LoadData("Select a.SoHoSo, a.Ho, a.Ten, a.NgaySinh, a.GioiTinh, b.TenQue, c.TenKhuVuc, d.TenUuTien, " +
+		//		"e.TenDoiTuong, f.TenNguyenVong, a.SoBD, a.GhiChu From HoSoThiSinh a inner join QueQuan b on a.MaQue = b.MaQue " +
+		//		"inner join KhuVuc c on a.MaKhuVuc = c.MaKhuVuc inner join UuTien d on a.MaUuTien = d.MaUuTien inner join DoiTuong e" +
+		//		" on a.MaDoiTuong = e.MaDoiTuong inner join NguyenVong f on a.MaNguyenVong = f.MaNguyenVong inner join Phongthi_ThiSinh g on a.SoBD = g.SoBD" +
+		//		" Where g.MaPhongThi = ''");
+		//	btnXuat.Enabled = false;
+		//}
 
 		private void cbbPhongthi_SelectedIndexChanged(object sender, EventArgs e)
 		{
