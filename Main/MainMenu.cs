@@ -31,6 +31,8 @@ namespace BTL_ThiSinhThiDaiHoc
 		private void MainMenu_Load(object sender, EventArgs e)
 		{
 			HomeMenu();
+			MoFile(hstt);
+			HideMenu();
 		}
 
 		private void HomeMenu()
@@ -192,6 +194,17 @@ namespace BTL_ThiSinhThiDaiHoc
 		private void guna2PictureBox1_Click(object sender, EventArgs e)
 		{
 			if (MessageBox.Show("Bạn có muốn quay lại trang đăng nhập không?", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
+			{
+				this.Hide();
+				Login form = new Login();
+				form.ShowDialog();
+				this.Close();
+			}
+		}
+
+		private void btnDangXuat_Click(object sender, EventArgs e)
+		{
+			if (MessageBox.Show("Bạn có đăng xuất không?", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
 			{
 				this.Hide();
 				Login form = new Login();

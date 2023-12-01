@@ -32,6 +32,7 @@
 			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
 			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
 			this.panel_body = new Guna.UI2.WinForms.Guna2Panel();
+			this.btnLamLai = new Guna.UI2.WinForms.Guna2GradientButton();
 			this.label4 = new System.Windows.Forms.Label();
 			this.cbbMaPhongThi = new Guna.UI2.WinForms.Guna2ComboBox();
 			this.label2 = new System.Windows.Forms.Label();
@@ -41,7 +42,6 @@
 			this.DiemMon1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.DiemMon2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.DiemMon3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.btnLamLai = new Guna.UI2.WinForms.Guna2GradientButton();
 			this.panel_body.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.dgvHienThi)).BeginInit();
 			this.SuspendLayout();
@@ -58,6 +58,28 @@
 			this.panel_body.Name = "panel_body";
 			this.panel_body.Size = new System.Drawing.Size(1332, 200);
 			this.panel_body.TabIndex = 1;
+			// 
+			// btnLamLai
+			// 
+			this.btnLamLai.Anchor = System.Windows.Forms.AnchorStyles.Top;
+			this.btnLamLai.Animated = true;
+			this.btnLamLai.BorderRadius = 10;
+			this.btnLamLai.Cursor = System.Windows.Forms.Cursors.Hand;
+			this.btnLamLai.CustomImages.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
+			this.btnLamLai.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+			this.btnLamLai.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+			this.btnLamLai.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+			this.btnLamLai.DisabledState.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+			this.btnLamLai.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+			this.btnLamLai.Font = new System.Drawing.Font("Segoe UI", 12F);
+			this.btnLamLai.ForeColor = System.Drawing.Color.White;
+			this.btnLamLai.Location = new System.Drawing.Point(1099, 13);
+			this.btnLamLai.Margin = new System.Windows.Forms.Padding(4);
+			this.btnLamLai.Name = "btnLamLai";
+			this.btnLamLai.Size = new System.Drawing.Size(180, 55);
+			this.btnLamLai.TabIndex = 40;
+			this.btnLamLai.Text = "Danh sách";
+			this.btnLamLai.Click += new System.EventHandler(this.btnLamLai_Click);
 			// 
 			// label4
 			// 
@@ -207,28 +229,6 @@
 			this.DiemMon3.HeaderText = "Điểm môn 3";
 			this.DiemMon3.MinimumWidth = 6;
 			this.DiemMon3.Name = "DiemMon3";
-			// 
-			// btnLamLai
-			// 
-			this.btnLamLai.Anchor = System.Windows.Forms.AnchorStyles.Top;
-			this.btnLamLai.Animated = true;
-			this.btnLamLai.BorderRadius = 10;
-			this.btnLamLai.Cursor = System.Windows.Forms.Cursors.Hand;
-			this.btnLamLai.CustomImages.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
-			this.btnLamLai.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-			this.btnLamLai.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-			this.btnLamLai.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-			this.btnLamLai.DisabledState.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-			this.btnLamLai.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-			this.btnLamLai.Font = new System.Drawing.Font("Segoe UI", 12F);
-			this.btnLamLai.ForeColor = System.Drawing.Color.White;
-			this.btnLamLai.Location = new System.Drawing.Point(1099, 13);
-			this.btnLamLai.Margin = new System.Windows.Forms.Padding(4);
-			this.btnLamLai.Name = "btnLamLai";
-			this.btnLamLai.Size = new System.Drawing.Size(180, 55);
-			this.btnLamLai.TabIndex = 40;
-			this.btnLamLai.Text = "Làm lại";
-			this.btnLamLai.Click += new System.EventHandler(this.btnLamLai_Click);
 			// 
 			// QLDiem
 			// 

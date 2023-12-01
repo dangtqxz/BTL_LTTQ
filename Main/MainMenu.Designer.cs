@@ -46,6 +46,7 @@
 			this.guna2Panel1 = new Guna.UI2.WinForms.Guna2Panel();
 			this.guna2PictureBox1 = new Guna.UI2.WinForms.Guna2PictureBox();
 			this.panel_body = new Guna.UI2.WinForms.Guna2Panel();
+			this.btnDangXuat = new Guna.UI2.WinForms.Guna2GradientButton();
 			this.panel1.SuspendLayout();
 			this.panelThongKe.SuspendLayout();
 			this.panelTimKiem.SuspendLayout();
@@ -56,6 +57,7 @@
 			// panel1
 			// 
 			this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(42)))), ((int)(((byte)(52)))));
+			this.panel1.Controls.Add(this.btnDangXuat);
 			this.panel1.Controls.Add(this.panelThongKe);
 			this.panel1.Controls.Add(this.btnThongKe);
 			this.panel1.Controls.Add(this.panelTimKiem);
@@ -67,7 +69,7 @@
 			this.panel1.Dock = System.Windows.Forms.DockStyle.Left;
 			this.panel1.Location = new System.Drawing.Point(0, 0);
 			this.panel1.Name = "panel1";
-			this.panel1.Size = new System.Drawing.Size(250, 703);
+			this.panel1.Size = new System.Drawing.Size(250, 803);
 			this.panel1.TabIndex = 0;
 			// 
 			// panelThongKe
@@ -427,15 +429,43 @@
 			this.panel_body.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.panel_body.Location = new System.Drawing.Point(250, 0);
 			this.panel_body.Name = "panel_body";
-			this.panel_body.Size = new System.Drawing.Size(1332, 703);
+			this.panel_body.Size = new System.Drawing.Size(1332, 803);
 			this.panel_body.TabIndex = 1;
+			// 
+			// btnDangXuat
+			// 
+			this.btnDangXuat.Animated = true;
+			this.btnDangXuat.BackColor = System.Drawing.Color.Transparent;
+			this.btnDangXuat.ButtonMode = Guna.UI2.WinForms.Enums.ButtonMode.RadioButton;
+			this.btnDangXuat.Cursor = System.Windows.Forms.Cursors.Hand;
+			this.btnDangXuat.CustomImages.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
+			this.btnDangXuat.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+			this.btnDangXuat.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+			this.btnDangXuat.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+			this.btnDangXuat.DisabledState.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+			this.btnDangXuat.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+			this.btnDangXuat.Dock = System.Windows.Forms.DockStyle.Bottom;
+			this.btnDangXuat.FillColor = System.Drawing.Color.Empty;
+			this.btnDangXuat.FillColor2 = System.Drawing.Color.Empty;
+			this.btnDangXuat.Font = new System.Drawing.Font("Segoe UI", 12F);
+			this.btnDangXuat.ForeColor = System.Drawing.Color.White;
+			this.btnDangXuat.HoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(228)))), ((int)(((byte)(62)))), ((int)(((byte)(103)))));
+			this.btnDangXuat.HoverState.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(42)))), ((int)(((byte)(52)))));
+			this.btnDangXuat.Location = new System.Drawing.Point(0, 743);
+			this.btnDangXuat.Margin = new System.Windows.Forms.Padding(4);
+			this.btnDangXuat.Name = "btnDangXuat";
+			this.btnDangXuat.Size = new System.Drawing.Size(250, 60);
+			this.btnDangXuat.TabIndex = 24;
+			this.btnDangXuat.Text = "Đăng xuất";
+			this.btnDangXuat.UseTransparentBackground = true;
+			this.btnDangXuat.Click += new System.EventHandler(this.btnDangXuat_Click);
 			// 
 			// MainMenu
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(81)))));
-			this.ClientSize = new System.Drawing.Size(1582, 703);
+			this.ClientSize = new System.Drawing.Size(1582, 803);
 			this.Controls.Add(this.panel_body);
 			this.Controls.Add(this.panel1);
 			this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -470,5 +500,6 @@
 		private Guna.UI2.WinForms.Guna2GradientButton btndstspt;
 		private Guna.UI2.WinForms.Guna2Panel guna2Panel1;
 		private Guna.UI2.WinForms.Guna2PictureBox guna2PictureBox1;
+		private Guna.UI2.WinForms.Guna2GradientButton btnDangXuat;
 	}
 }
