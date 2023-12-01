@@ -36,6 +36,7 @@
 			this.guna2Panel1 = new Guna.UI2.WinForms.Guna2Panel();
 			this.dgvHienThi = new Guna.UI2.WinForms.Guna2DataGridView();
 			this.SoHoSo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.SoBD = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.Ho = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.Ten = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.NgaySinh = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -45,7 +46,6 @@
 			this.TenUuTien = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.TenDoiTuong = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.TenNguyenVong = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.SoBD = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.GhiChu = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.guna2Panel1.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.dgvHienThi)).BeginInit();
@@ -123,6 +123,7 @@
 			this.dgvHienThi.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
 			this.dgvHienThi.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.SoHoSo,
+            this.SoBD,
             this.Ho,
             this.Ten,
             this.NgaySinh,
@@ -132,7 +133,6 @@
             this.TenUuTien,
             this.TenDoiTuong,
             this.TenNguyenVong,
-            this.SoBD,
             this.GhiChu});
 			this.dgvHienThi.Cursor = System.Windows.Forms.Cursors.Default;
 			dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
@@ -184,6 +184,14 @@
 			this.SoHoSo.MinimumWidth = 100;
 			this.SoHoSo.Name = "SoHoSo";
 			this.SoHoSo.ReadOnly = true;
+			// 
+			// SoBD
+			// 
+			this.SoBD.DataPropertyName = "SoBD";
+			this.SoBD.HeaderText = "Số báo danh";
+			this.SoBD.MinimumWidth = 150;
+			this.SoBD.Name = "SoBD";
+			this.SoBD.ReadOnly = true;
 			// 
 			// Ho
 			// 
@@ -257,14 +265,6 @@
 			this.TenNguyenVong.Name = "TenNguyenVong";
 			this.TenNguyenVong.ReadOnly = true;
 			// 
-			// SoBD
-			// 
-			this.SoBD.DataPropertyName = "SoBD";
-			this.SoBD.HeaderText = "Số báo danh";
-			this.SoBD.MinimumWidth = 150;
-			this.SoBD.Name = "SoBD";
-			this.SoBD.ReadOnly = true;
-			// 
 			// GhiChu
 			// 
 			this.GhiChu.DataPropertyName = "GhiChu";
@@ -298,6 +298,7 @@
 		private Guna.UI2.WinForms.Guna2Panel guna2Panel1;
 		private Guna.UI2.WinForms.Guna2DataGridView dgvHienThi;
 		private System.Windows.Forms.DataGridViewTextBoxColumn SoHoSo;
+		private System.Windows.Forms.DataGridViewTextBoxColumn SoBD;
 		private System.Windows.Forms.DataGridViewTextBoxColumn Ho;
 		private System.Windows.Forms.DataGridViewTextBoxColumn Ten;
 		private System.Windows.Forms.DataGridViewTextBoxColumn NgaySinh;
@@ -307,7 +308,6 @@
 		private System.Windows.Forms.DataGridViewTextBoxColumn TenUuTien;
 		private System.Windows.Forms.DataGridViewTextBoxColumn TenDoiTuong;
 		private System.Windows.Forms.DataGridViewTextBoxColumn TenNguyenVong;
-		private System.Windows.Forms.DataGridViewTextBoxColumn SoBD;
 		private System.Windows.Forms.DataGridViewTextBoxColumn GhiChu;
 	}
 }

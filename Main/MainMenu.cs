@@ -99,7 +99,7 @@ namespace BTL_ThiSinhThiDaiHoc
 				HideMenu();
 			} else
 			{
-				MessageBox.Show("Vui lòng xếp phòng thi trước khi nhập điểm");
+				MessageBox.Show("Vui lòng xếp phòng thi trước khi nhập điểm!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
 			}
 		}
 
@@ -129,7 +129,7 @@ namespace BTL_ThiSinhThiDaiHoc
 			}
 			else
 			{
-				MessageBox.Show("Vui lòng xếp phòng thi và nhập điểm trước");
+				MessageBox.Show("Vui lòng xếp phòng thi và nhập điểm trước!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
 			}
 		}
 
@@ -143,7 +143,7 @@ namespace BTL_ThiSinhThiDaiHoc
 			}
 			else
 			{
-				MessageBox.Show("Vui lòng xếp phòng thi trước");
+				MessageBox.Show("Vui lòng xếp phòng thi trước!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
 			}
 		}
 
@@ -157,7 +157,7 @@ namespace BTL_ThiSinhThiDaiHoc
 			}
 			else
 			{
-				MessageBox.Show("Vui lòng xếp phòng thi và nhập điểm trước");
+				MessageBox.Show("Vui lòng xếp phòng thi và nhập điểm trước!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
 			}
 		}
 
@@ -171,7 +171,7 @@ namespace BTL_ThiSinhThiDaiHoc
 			}
 			else
 			{
-				MessageBox.Show("Vui lòng xếp phòng thi và nhập điểm trước");
+				MessageBox.Show("Vui lòng xếp phòng thi và nhập điểm trước!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
 			}
 		}
 
@@ -185,16 +185,19 @@ namespace BTL_ThiSinhThiDaiHoc
 			}
 			else
 			{
-				MessageBox.Show("Vui lòng xếp phòng thi và nhập điểm trước");
+				MessageBox.Show("Vui lòng xếp phòng thi và nhập điểm trước!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
 			}
 		}
 
 		private void guna2PictureBox1_Click(object sender, EventArgs e)
 		{
-			this.Hide();
-			Login form = new Login();
-			form.ShowDialog();
-			this.Close();
+			if (MessageBox.Show("Bạn có muốn quay lại trang đăng nhập không?", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
+			{
+				this.Hide();
+				Login form = new Login();
+				form.ShowDialog();
+				this.Close();
+			}
 		}
 	}
 }
