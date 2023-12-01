@@ -88,7 +88,7 @@ namespace BTL_ThiSinhThiDaiHoc
 					rdbNu.Checked = true;
 				}
 				dtpNgaySinh.Value = Convert.ToDateTime(tb.Rows[0]["NgaySinh"].ToString());
-				txtSBD.Text = tb.Rows[0]["SoBD"].ToString();
+				//txtSBD.Text = tb.Rows[0]["SoBD"].ToString();
 
 				string cellValue = tb.Rows[0]["TenQue"].ToString();
 				int index = cbbMaQue.Items.IndexOf(cellValue);
@@ -128,59 +128,111 @@ namespace BTL_ThiSinhThiDaiHoc
 
 		private void btnSinhSBD_Click(object sender, EventArgs e)
 		{
-			if (txtHoTen.Text.Trim().Equals(""))
+			if (_editMode == false)
 			{
-				MessageBox.Show("Hãy nhập Họ và tên");
-				txtHoTen.Focus();
-				return;
-			}
-			DataTable tb = new DataTable();
-			tb = md.LoadData("Select a.SoHoSo, a.Ho, a.Ten, a.NgaySinh, a.GioiTinh, b.TenQue, c.TenKhuVuc, d.TenUuTien, " +
-				"e.TenDoiTuong, f.TenNguyenVong, a.SoBD, a.GhiChu From HoSoThiSinh a inner join QueQuan b on a.MaQue = b.MaQue " +
-				"inner join KhuVuc c on a.MaKhuVuc = c.MaKhuVuc inner join UuTien d on a.MaUuTien = d.MaUuTien " +
-				"inner join DoiTuong e on a.MaDoiTuong = e.MaDoiTuong inner join NguyenVong f on a.MaNguyenVong = f.MaNguyenVong");
-
-			int sbd = 1;
-			DataRow newRow = tb.NewRow();
-
-			string input = txtHoTen.Text;
-			string[] words = input.Split(new char[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
-
-			if (words.Length < 2)
-			{
-				MessageBox.Show("Hãy nhập đủ Họ và tên");
-				txtHoTen.Focus();
-				return;
-			}
-
-			string ht = txtHoTen.Text;
-
-			int i = ht.LastIndexOf(" ");
-
-			string ten = ht.Substring(i + 1);
-			string ho = ht.Substring(0, i);
-
-			newRow["Ho"] = ho;
-			newRow["Ten"] = ten;
-			newRow["SoBD"] = sbd;
-			tb.Rows.Add(newRow);
-
-			tb.DefaultView.Sort = "Ten ASC, Ho ASC";
-			tb = tb.DefaultView.ToTable();
-
-			foreach (DataRow dr in tb.Rows)
-			{
-				dr["SoBD"] = sbd;
-				if (dr["SoHoSo"].ToString() != "")
+				if (txtHoTen.Text.Trim().Equals(""))
 				{
-					md.Command("Update HoSoThiSinh Set SoBD = '" + sbd + "' Where SoHoSo = '" + dr["SoHoSo"].ToString() + "'");
+					MessageBox.Show("Hãy nhập Họ và tên");
+					txtHoTen.Focus();
+					return;
 				}
-				else
+				DataTable tb = new DataTable();
+				tb = md.LoadData("Select a.SoHoSo, a.Ho, a.Ten, a.NgaySinh, a.GioiTinh, b.TenQue, c.TenKhuVuc, d.TenUuTien, " +
+					"e.TenDoiTuong, f.TenNguyenVong, a.SoBD, a.GhiChu From HoSoThiSinh a inner join QueQuan b on a.MaQue = b.MaQue " +
+					"inner join KhuVuc c on a.MaKhuVuc = c.MaKhuVuc inner join UuTien d on a.MaUuTien = d.MaUuTien " +
+					"inner join DoiTuong e on a.MaDoiTuong = e.MaDoiTuong inner join NguyenVong f on a.MaNguyenVong = f.MaNguyenVong");
+
+				int sbd = 1;
+				DataRow newRow = tb.NewRow();
+
+				string input = txtHoTen.Text;
+				string[] words = input.Split(new char[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
+
+				if (words.Length < 2)
 				{
-					txtSBD.Text = sbd.ToString();
+					MessageBox.Show("Hãy nhập đủ Họ và tên");
+					txtHoTen.Focus();
+					return;
 				}
-				sbd++;
-			}
+
+				string ht = txtHoTen.Text;
+
+				int i = ht.LastIndexOf(" ");
+
+				string ten = ht.Substring(i + 1);
+				string ho = ht.Substring(0, i);
+
+				newRow["Ho"] = ho;
+				newRow["Ten"] = ten;
+				newRow["SoBD"] = sbd;
+				tb.Rows.Add(newRow);
+
+				tb.DefaultView.Sort = "Ten ASC, Ho ASC";
+				tb = tb.DefaultView.ToTable();
+
+				foreach (DataRow dr in tb.Rows)
+				{
+					dr["SoBD"] = sbd;
+					if (dr["SoHoSo"].ToString() != "")
+					{
+						md.Command("Update HoSoThiSinh Set SoBD = '" + sbd + "' Where SoHoSo = '" + dr["SoHoSo"].ToString() + "'");
+					}
+					else
+					{
+						txtSBD.Text = sbd.ToString();
+					}
+					sbd++;
+				}
+			} else
+			{
+				if (txtHoTen.Text.Trim().Equals(""))
+				{
+					MessageBox.Show("Hãy nhập Họ và tên");
+					txtHoTen.Focus();
+					return;
+				}
+
+				DataTable tb = new DataTable();
+				tb = md.LoadData("Select a.SoHoSo, a.Ho, a.Ten, a.NgaySinh, a.GioiTinh, b.TenQue, c.TenKhuVuc, d.TenUuTien, " +
+					"e.TenDoiTuong, f.TenNguyenVong, a.SoBD, a.GhiChu From HoSoThiSinh a inner join QueQuan b on a.MaQue = b.MaQue " +
+					"inner join KhuVuc c on a.MaKhuVuc = c.MaKhuVuc inner join UuTien d on a.MaUuTien = d.MaUuTien " +
+					"inner join DoiTuong e on a.MaDoiTuong = e.MaDoiTuong inner join NguyenVong f on a.MaNguyenVong = f.MaNguyenVong");
+				string ht = txtHoTen.Text;
+
+				int i = ht.LastIndexOf(" ");
+
+				string ten = ht.Substring(i + 1);
+				string ho = ht.Substring(0, i);
+
+				string ma = txtSoHoSo.Text;
+				
+				foreach(DataRow item in tb.Rows)
+				{
+					if (item["SoHoSo"].ToString() == ma)
+					{
+						item["Ho"] = ho;
+						item["Ten"] = ten;
+						MessageBox.Show(item["Ho"].ToString());
+					} 
+				}
+
+				tb.DefaultView.Sort = "Ten ASC, Ho ASC";
+				tb = tb.DefaultView.ToTable();
+				int sbd = 1;
+				foreach (DataRow dr in tb.Rows)
+				{
+					dr["SoBD"] = sbd;
+					if (dr["SoHoSo"].ToString() != ma)
+					{
+						md.Command("Update HoSoThiSinh Set SoBD = '" + sbd + "' Where SoHoSo = '" + dr["SoHoSo"].ToString() + "'");
+					}
+					else
+					{
+						txtSBD.Text = sbd.ToString();
+					}
+					sbd++;
+				}
+			}	
 		}
 
 		private void btnMoi_Click(object sender, EventArgs e)
@@ -398,6 +450,37 @@ namespace BTL_ThiSinhThiDaiHoc
 				//Xóa
 				md.Command("Delete From PhongThi_ThiSinh");
 				md.Command("Delete From DiemThi");
+
+				DataTable tb = new DataTable();
+				tb = md.LoadData("Select a.SoHoSo, a.Ho, a.Ten, a.NgaySinh, a.GioiTinh, b.TenQue, c.TenKhuVuc, d.TenUuTien, " +
+					"e.TenDoiTuong, f.TenNguyenVong, a.SoBD, a.GhiChu From HoSoThiSinh a inner join QueQuan b on a.MaQue = b.MaQue " +
+					"inner join KhuVuc c on a.MaKhuVuc = c.MaKhuVuc inner join UuTien d on a.MaUuTien = d.MaUuTien " +
+					"inner join DoiTuong e on a.MaDoiTuong = e.MaDoiTuong inner join NguyenVong f on a.MaNguyenVong = f.MaNguyenVong");
+
+				DataRow[] rowDelete = tb.Select("SoHoSo = '" + txtSoHoSo.Text + "'");
+				foreach(DataRow row in rowDelete)
+				{
+					tb.Rows.Remove(row);
+				}
+				int sbd = 1;
+
+				tb.DefaultView.Sort = "Ten ASC, Ho ASC";
+				tb = tb.DefaultView.ToTable();
+
+				foreach (DataRow dr in tb.Rows)
+				{
+					dr["SoBD"] = sbd;
+					if (dr["SoHoSo"].ToString() != "")
+					{
+						md.Command("Update HoSoThiSinh Set SoBD = '" + sbd + "' Where SoHoSo = '" + dr["SoHoSo"].ToString() + "'");
+					}
+					else
+					{
+						txtSBD.Text = sbd.ToString();
+					}
+					sbd++;
+				}
+
 				this.Close();
 			}
 		}
