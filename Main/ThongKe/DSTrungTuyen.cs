@@ -41,7 +41,8 @@ namespace BTL_ThiSinhThiDaiHoc
 				"(h.DiemMon1+h.DiemMon2+h.DiemMon3+c.DiemCong+d.DiemUuTien+e.DiemCong) As TongDiem From HoSoThiSinh a inner join QueQuan b on a.MaQue = b.MaQue " +
 				"inner join KhuVuc c on a.MaKhuVuc = c.MaKhuVuc inner join UuTien d on a.MaUuTien = d.MaUuTien inner join DoiTuong e on a.MaDoiTuong = e.MaDoiTuong " +
 				"inner join NguyenVong f on a.MaNguyenVong = f.MaNguyenVong inner join DiemThi h on a.SoBD = h.SoBD inner join DiemChuan g on a.MaNguyenVong = g.MaNguyenVong " +
-				"Where a.MaNguyenVong = '" + ma + "' and (h.DiemMon1+h.DiemMon2+h.DiemMon3+c.DiemCong+d.DiemUuTien+e.DiemCong) >= g.DiemChuan Order by TongDiem DESC");
+				"Where a.MaNguyenVong = '" + ma + "' and (h.DiemMon1+h.DiemMon2+h.DiemMon3+c.DiemCong+d.DiemUuTien+e.DiemCong) >= g.DiemChuan Order by TongDiem DESC, " +
+				"(h.DiemMon1+h.DiemMon2+h.DiemMon3) DESC");
 			dgvHienThi.DataSource = dt;
 			if (dt.Rows.Count > 0)
 			{
@@ -73,7 +74,7 @@ namespace BTL_ThiSinhThiDaiHoc
 				"(h.DiemMon1+h.DiemMon2+h.DiemMon3+c.DiemCong+d.DiemUuTien+e.DiemCong) As TongDiem From HoSoThiSinh a inner join QueQuan b on a.MaQue = b.MaQue " +
 				"inner join KhuVuc c on a.MaKhuVuc = c.MaKhuVuc inner join UuTien d on a.MaUuTien = d.MaUuTien inner join DoiTuong e on a.MaDoiTuong = e.MaDoiTuong " +
 				"inner join NguyenVong f on a.MaNguyenVong = f.MaNguyenVong inner join DiemThi h on a.SoBD = h.SoBD inner join DiemChuan g on a.MaNguyenVong = g.MaNguyenVong " +
-				"Where a.MaNguyenVong = '' and (h.DiemMon1+h.DiemMon2+h.DiemMon3+c.DiemCong+d.DiemUuTien+e.DiemCong) >= g.DiemChuan Order by TongDiem DESC");
+				"Where a.MaNguyenVong = '' and (h.DiemMon1+h.DiemMon2+h.DiemMon3+c.DiemCong+d.DiemUuTien+e.DiemCong) >= g.DiemChuan Order by TongDiem DESC, (h.DiemMon1+h.DiemMon2+h.DiemMon3) DESC");
 			btnXuat.Enabled = false;
 		}
 

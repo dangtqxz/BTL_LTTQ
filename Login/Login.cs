@@ -48,7 +48,6 @@ namespace BTL_ThiSinhThiDaiHoc
 					string query = "Select * From TKvaMK Where TaiKhoan = '" + tentk + "' and MatKhau = '" + mk + "'";
 					if (md.TaiKhoans(query).Count != 0)
 					{
-						MessageBox.Show("Dang nhap thanh cong!", "Thông báo", MessageBoxButtons.OK);
 						this.Hide();
 						MainMenu form = new MainMenu();
 						form.ShowDialog();

@@ -160,8 +160,6 @@ namespace BTL_ThiSinhThiDaiHoc
 			string ten = ht.Substring(i + 1);
 			string ho = ht.Substring(0, i);
 
-			MessageBox.Show(ho);
-			MessageBox.Show(ten);
 			newRow["Ho"] = ho;
 			newRow["Ten"] = ten;
 			newRow["SoBD"] = sbd;

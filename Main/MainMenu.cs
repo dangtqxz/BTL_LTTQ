@@ -121,32 +121,80 @@ namespace BTL_ThiSinhThiDaiHoc
 
 		private void btnDiemThi_Click(object sender, EventArgs e)
 		{
-			MoFile(tkdt);
-			HideMenu();
+			DataTable dt = md.LoadData("Select * From DiemThi");
+			if (dt.Rows.Count > 0)
+			{
+				MoFile(tkdt);
+				HideMenu();
+			}
+			else
+			{
+				MessageBox.Show("Vui lòng xếp phòng thi và nhập điểm trước");
+			}
 		}
 
 		private void btndstspt_Click(object sender, EventArgs e)
 		{
-			MoFile(tktsinh);
-			HideMenu();
+			DataTable dt = md.LoadData("Select * From PhongThi_ThiSinh");
+			if (dt.Rows.Count > 0)
+			{
+				MoFile(tktsinh);
+				HideMenu();
+			}
+			else
+			{
+				MessageBox.Show("Vui lòng xếp phòng thi trước");
+			}
 		}
 
 		private void btntop10_Click(object sender, EventArgs e)
 		{
-			MoFile(tktop10);
-			HideMenu();
+			DataTable dt = md.LoadData("Select * From DiemThi");
+			if (dt.Rows.Count > 0)
+			{
+				MoFile(tktop10);
+				HideMenu();
+			}
+			else
+			{
+				MessageBox.Show("Vui lòng xếp phòng thi và nhập điểm trước");
+			}
 		}
 
 		private void btndstrungtuyen_Click(object sender, EventArgs e)
 		{
-			MoFile(DSTrungTuyen);
-			HideMenu();
+			DataTable dt = md.LoadData("Select * From DiemThi");
+			if (dt.Rows.Count > 0)
+			{
+				MoFile(DSTrungTuyen);
+				HideMenu();
+			}
+			else
+			{
+				MessageBox.Show("Vui lòng xếp phòng thi và nhập điểm trước");
+			}
 		}
 
 		private void btndsdt_Click(object sender, EventArgs e)
 		{
-			MoFile(tkdthi);
-			HideMenu(); 
+			DataTable dt = md.LoadData("Select * From DiemThi");
+			if (dt.Rows.Count > 0)
+			{
+				MoFile(tkdthi);
+				HideMenu();
+			}
+			else
+			{
+				MessageBox.Show("Vui lòng xếp phòng thi và nhập điểm trước");
+			}
+		}
+
+		private void guna2PictureBox1_Click(object sender, EventArgs e)
+		{
+			this.Hide();
+			Login form = new Login();
+			form.ShowDialog();
+			this.Close();
 		}
 	}
 }

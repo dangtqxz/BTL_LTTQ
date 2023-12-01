@@ -21,8 +21,9 @@ namespace BTL_ThiSinhThiDaiHoc
 		private void btnRefresh_Click(object sender, EventArgs e)
 		{
 			txtTimKiem.Text = "";
-			dgvHienThi.DataSource = md.LoadData("Select a.SoBD, a.Ho, a.Ten, b.DiemMon1, b.DiemMon2, b.DiemMon3 From HoSoThiSinh a Inner Join DiemThi b On a.SoBD = b.SoBD " +
-						"Where a.Ho = N'' And a.Ten = N''");
+			dgvHienThi.DataSource = md.LoadData("Select a.SoBD, a.Ho, a.Ten, Case WHEN a.GioiTinh = 1 THEN N'Nam' WHEN a.GioiTinh = 0 THEN N'Nữ' End As GioiTinh, a.NgaySinh, c.TenQue, " +
+						"b.DiemMon1, b.DiemMon2, b.DiemMon3 From HoSoThiSinh a Inner Join DiemThi b On a.SoBD = b.SoBD inner join QueQuan c on a.MaQue = c.MaQue " +
+						"Where a.SoBD = N''");
 		}
 
 		private void btnTimKiem_Click(object sender, EventArgs e)
@@ -41,7 +42,8 @@ namespace BTL_ThiSinhThiDaiHoc
 				{
 					string ho = hoten.Substring(0, hoten.LastIndexOf(" "));
 					string ten = hoten.Substring(hoten.LastIndexOf(" ") + 1);
-					dt = md.LoadData("Select a.SoBD, a.Ho, a.Ten, b.DiemMon1, b.DiemMon2, b.DiemMon3 From HoSoThiSinh a Inner Join DiemThi b On a.SoBD = b.SoBD " +
+					dt = md.LoadData("Select a.SoBD, a.Ho, a.Ten, Case WHEN a.GioiTinh = 1 THEN N'Nam' WHEN a.GioiTinh = 0 THEN N'Nữ' End As GioiTinh, a.NgaySinh, c.TenQue, " +
+						"b.DiemMon1, b.DiemMon2, b.DiemMon3 From HoSoThiSinh a Inner Join DiemThi b On a.SoBD = b.SoBD inner join QueQuan c on a.MaQue = c.MaQue " +
 						"Where a.Ho = N'" + ho + "' And a.Ten = N'" + ten + "'");
 				}
 
@@ -51,7 +53,8 @@ namespace BTL_ThiSinhThiDaiHoc
 				}
 				else
 				{
-					dt = md.LoadData("Select a.SoBD, a.Ho, a.Ten, b.DiemMon1, b.DiemMon2, b.DiemMon3 From HoSoThiSinh a Inner Join DiemThi b On a.SoBD = b.SoBD " +
+					dt = md.LoadData("Select a.SoBD, a.Ho, a.Ten, Case WHEN a.GioiTinh = 1 THEN N'Nam' WHEN a.GioiTinh = 0 THEN N'Nữ' End As GioiTinh, a.NgaySinh, c.TenQue, " +
+						"b.DiemMon1, b.DiemMon2, b.DiemMon3 From HoSoThiSinh a Inner Join DiemThi b On a.SoBD = b.SoBD inner join QueQuan c on a.MaQue = c.MaQue " +
 						"Where a.SoBD = N'" + txtTimKiem.Text + "'");
 
 					if (dt.Rows.Count > 0)

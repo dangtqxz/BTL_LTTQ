@@ -41,6 +41,9 @@
 			this.SoBD = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.Ho = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.Ten = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.GioiTinh = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.NgaySinh = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.TenQue = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.DiemMon1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.DiemMon2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.DiemMon3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -178,6 +181,9 @@
             this.SoBD,
             this.Ho,
             this.Ten,
+            this.GioiTinh,
+            this.NgaySinh,
+            this.TenQue,
             this.DiemMon1,
             this.DiemMon2,
             this.DiemMon3});
@@ -247,6 +253,30 @@
 			this.Ten.Name = "Ten";
 			this.Ten.ReadOnly = true;
 			// 
+			// GioiTinh
+			// 
+			this.GioiTinh.DataPropertyName = "GioiTinh";
+			this.GioiTinh.HeaderText = "Giới tính";
+			this.GioiTinh.MinimumWidth = 6;
+			this.GioiTinh.Name = "GioiTinh";
+			this.GioiTinh.ReadOnly = true;
+			// 
+			// NgaySinh
+			// 
+			this.NgaySinh.DataPropertyName = "NgaySinh";
+			this.NgaySinh.HeaderText = "Ngày sinh";
+			this.NgaySinh.MinimumWidth = 6;
+			this.NgaySinh.Name = "NgaySinh";
+			this.NgaySinh.ReadOnly = true;
+			// 
+			// TenQue
+			// 
+			this.TenQue.DataPropertyName = "TenQue";
+			this.TenQue.HeaderText = "Quê quán";
+			this.TenQue.MinimumWidth = 6;
+			this.TenQue.Name = "TenQue";
+			this.TenQue.ReadOnly = true;
+			// 
 			// DiemMon1
 			// 
 			this.DiemMon1.DataPropertyName = "DiemMon1";
@@ -300,6 +330,9 @@
 		private System.Windows.Forms.DataGridViewTextBoxColumn SoBD;
 		private System.Windows.Forms.DataGridViewTextBoxColumn Ho;
 		private System.Windows.Forms.DataGridViewTextBoxColumn Ten;
+		private System.Windows.Forms.DataGridViewTextBoxColumn GioiTinh;
+		private System.Windows.Forms.DataGridViewTextBoxColumn NgaySinh;
+		private System.Windows.Forms.DataGridViewTextBoxColumn TenQue;
 		private System.Windows.Forms.DataGridViewTextBoxColumn DiemMon1;
 		private System.Windows.Forms.DataGridViewTextBoxColumn DiemMon2;
 		private System.Windows.Forms.DataGridViewTextBoxColumn DiemMon3;
