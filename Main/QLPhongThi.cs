@@ -22,7 +22,7 @@ namespace BTL_ThiSinhThiDaiHoc
 		private void loadData()
 		{
 			cbbSoPhongThi.Items.Clear();
-			DataTable dt = md.LoadData("Select Distinct MaPhongThi From PhongThi_ThiSinh");
+			DataTable dt = md.LoadData("Select Distinct MaPhongThi From PhongThi_ThiSinh Order by Cast(MaPhongThi as int) ASC");
 			foreach (DataRow i in dt.Rows)
 			{
 				cbbSoPhongThi.Items.Add(i["MaPhongThi"].ToString());
