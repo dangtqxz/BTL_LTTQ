@@ -22,7 +22,7 @@ namespace BTL_ThiSinhThiDaiHoc
 		private void loadData()
 		{
 			cbbSoPhongThi.Items.Clear();
-			DataTable dt = md.LoadData("Select Distinct MaPhongThi From PhongThi_ThiSinh Order by Cast(MaPhongThi as int) ASC");
+			DataTable dt = md.LoadData("Select Distinct MaPhongThi From PhongThi_ThiSinh");
 			foreach (DataRow i in dt.Rows)
 			{
 				cbbSoPhongThi.Items.Add(i["MaPhongThi"].ToString());
@@ -53,8 +53,10 @@ namespace BTL_ThiSinhThiDaiHoc
 			{
 				md.Command("Delete From PhongThi_ThiSinh");
 				DataTable tb = md.LoadData("Select * From HoSoThiSinh Order by Cast(SoBD as int) ASC");
-				var n = tb.Rows.Count;
+				
 				var m = Int32.Parse(txtSoThiSinh.Text);
+				var a = tb.Rows.Count % m;
+				var b = tb.Rows.Count / m;
 				var count = 0;
 				var maphong = 0;
                 foreach (DataRow item in tb.Rows)
@@ -64,9 +66,17 @@ namespace BTL_ThiSinhThiDaiHoc
 						count = m;
 						maphong++;
 					}
-					md.Command("Insert Into PhongThi_ThiSinh Values ('" + maphong + "','" + item["SoBD"] + "','" + m + "')");
+					if (maphong == b+1)
+					{
+						md.Command("Insert Into PhongThi_ThiSinh Values ('" + maphong + "','" + item["SoBD"] + "','" + a + "')");
+					} else
+					{
+						md.Command("Insert Into PhongThi_ThiSinh Values ('" + maphong + "','" + item["SoBD"] + "','" + m + "')");
+					}
+					
 					count--;
                 }
+
 				loadData();
 				
 				//Sửa lại bảng điểm thi
