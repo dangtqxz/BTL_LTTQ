@@ -18,12 +18,6 @@ namespace BTL_ThiSinhThiDaiHoc
 			InitializeComponent();
 		}
 
-		private void btnRefresh_Click(object sender, EventArgs e)
-		{
-			txtTimKiem.Text = "";
-			dgvHienThi.DataSource = null;
-		}
-
 		private void btnTimKiem_Click(object sender, EventArgs e)
 		{
 			if (txtTimKiem.Text.Trim().Equals(""))
@@ -80,6 +74,17 @@ namespace BTL_ThiSinhThiDaiHoc
 					}
 				}
 			}
+		}
+
+		private void btnRefresh_Click_1(object sender, EventArgs e)
+		{
+			txtTimKiem.Text = "";
+			DataTable dt = md.LoadData("Select a.SoHoSo, a.Ho, a.Ten, a.NgaySinh, Case WHEN a.GioiTinh = 1 THEN N'Nam' WHEN a.GioiTinh = 0 THEN N'Nữ' End As GioiTinh, " +
+						"b.TenQue, c.TenKhuVuc, d.TenUuTien, e.TenDoiTuong, f.TenNguyenVong, a.SoBD, a.GhiChu From HoSoThiSinh a inner join QueQuan b on a.MaQue = b.MaQue " +
+						"inner join KhuVuc c on a.MaKhuVuc = c.MaKhuVuc inner join UuTien d on a.MaUuTien = d.MaUuTien inner join DoiTuong e" +
+						" on a.MaDoiTuong = e.MaDoiTuong inner join NguyenVong f on a.MaNguyenVong = f.MaNguyenVong Where Ho = N'' And Ten = N'' " +
+						"Order by Cast(a.SoHoSo as int) ASC");
+			dgvHienThi.DataSource = dt;
 		}
 	}
 }
