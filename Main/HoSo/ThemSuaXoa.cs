@@ -3,8 +3,10 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Globalization;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -212,7 +214,6 @@ namespace BTL_ThiSinhThiDaiHoc
 					{
 						item["Ho"] = ho;
 						item["Ten"] = ten;
-						MessageBox.Show(item["Ho"].ToString());
 					} 
 				}
 
@@ -418,27 +419,31 @@ namespace BTL_ThiSinhThiDaiHoc
 				txtSBD.Focus();
 				return;
 			}	
-			//hoten
-			string ht = txtHoTen.Text;
-			int i = ht.LastIndexOf(" ");
-			string ten = ht.Substring(i + 1);
-			string ho = ht.Substring(0, i);
-			//goitinh
-			string gt = "0";
-			if (rdbNam.Checked)
-			{
-				gt = "1";
-			}
 
-			md.Command("UPDATE HoSoThiSinh SET Ho = N'" + ho + "', Ten = N'" + ten + "', NgaySinh = '" + dtpNgaySinh.Value + "', GioiTinh = " + gt
-				+ ", MaQue = '" + layma(cbbMaQue.Text, "Que") + "', MaKhuVuc = '" + layma(cbbMaKV.Text, "KhuVuc") + "', MaUuTien = '" + layma(cbbMaUT.Text, "UuTien")
-				+ "', MaDoiTuong = '" + layma(cbbMaDT.Text, "DoiTuong") + "', MaNguyenVong = '" + layma(cbbMaNV.Text, "NguyenVong") + "', SoBD = '" + txtSBD.Text
-				+ "', GhiChu = N'" + txtGhiChu.Text + "' WHERE SoHoSo = '" + txtSoHoSo.Text + "'");
-			MessageBox.Show("Đã sửa xong");
-			//Xóa
-			md.Command("Delete From PhongThi_ThiSinh");
-			md.Command("Delete From DiemThi");
-			this.Close();
+			if (MessageBox.Show("Bạn có muốn sửa thí sinh có số hồ sơ là " + txtSoHoSo.Text + " không?", " Thông báo ", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+			{
+				//hoten
+				string ht = txtHoTen.Text;
+				int i = ht.LastIndexOf(" ");
+				string ten = ht.Substring(i + 1);
+				string ho = ht.Substring(0, i);
+				//goitinh
+				string gt = "0";
+				if (rdbNam.Checked)
+				{
+					gt = "1";
+				}
+
+				md.Command("UPDATE HoSoThiSinh SET Ho = N'" + ho + "', Ten = N'" + ten + "', NgaySinh = '" + dtpNgaySinh.Value + "', GioiTinh = " + gt
+					+ ", MaQue = '" + layma(cbbMaQue.Text, "Que") + "', MaKhuVuc = '" + layma(cbbMaKV.Text, "KhuVuc") + "', MaUuTien = '" + layma(cbbMaUT.Text, "UuTien")
+					+ "', MaDoiTuong = '" + layma(cbbMaDT.Text, "DoiTuong") + "', MaNguyenVong = '" + layma(cbbMaNV.Text, "NguyenVong") + "', SoBD = '" + txtSBD.Text
+					+ "', GhiChu = N'" + txtGhiChu.Text + "' WHERE SoHoSo = '" + txtSoHoSo.Text + "'");
+				MessageBox.Show("Đã sửa xong");
+				//Xóa
+				md.Command("Delete From PhongThi_ThiSinh");
+				md.Command("Delete From DiemThi");
+				this.Close();
+			}
 		}
 
 		private void btnXoa_Click(object sender, EventArgs e)
@@ -483,6 +488,70 @@ namespace BTL_ThiSinhThiDaiHoc
 
 				this.Close();
 			}
+		}
+		
+		static bool checkSoHS (string input)
+		{
+			return Regex.IsMatch(input, "^[a-zA-Z0-9]*$");
+		}
+
+		private void txtSoHoSo_TextChanged(object sender, EventArgs e)
+		{
+			string input = txtSoHoSo.Text;
+			bool isValid = checkSoHS(input);
+			if (!isValid)
+			{
+				MessageBox.Show("Không được nhập ký tự đặc biệt và chữ có dấu");
+				txtSoHoSo.Text = "";
+			}
+		}
+
+		static bool checkName(string input)
+		{
+			return Regex.IsMatch(input, @"^[a-zA-ZÀ-ÿ\sđăĐăưƯ]*$");
+		}
+
+		static bool IsInputValid(string input)
+		{
+			foreach (char c in input)
+			{
+				// Kiểm tra nếu ký tự không thuộc bộ ký tự Latin hoặc không phải dấu cách
+				if (!IsLatinCharacter(c) && !IsSpaceCharacter(c))
+				{
+					return false;
+				}
+			}
+
+			return true;
+		}
+
+		static bool IsSpaceCharacter(char c)
+		{
+			// Ký tự dấu cách
+			return c == ' ';
+		}
+
+		static bool IsLatinCharacter(char c)
+		{
+			// Bộ ký tự Latin và các chữ cái có dấu thường và in hoa
+			UnicodeCategory category = CharUnicodeInfo.GetUnicodeCategory(c);
+			return category == UnicodeCategory.LowercaseLetter ||
+				category == UnicodeCategory.UppercaseLetter ||
+				category == UnicodeCategory.TitlecaseLetter ||
+				category == UnicodeCategory.ModifierLetter ||
+				category == UnicodeCategory.OtherLetter;
+		}
+
+		private void txtHoTen_TextChanged(object sender, EventArgs e)
+		{
+			string input = txtHoTen.Text;
+			bool isValid = IsInputValid(input);
+			if (!isValid)
+			{
+				MessageBox.Show("Không được nhập ký tự đặc biệt và số");
+				txtHoTen.Text = "";
+			}
+			txtSBD.Text = "";
 		}
 	}
 }

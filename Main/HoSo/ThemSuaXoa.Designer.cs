@@ -29,6 +29,7 @@
 		private void InitializeComponent()
 		{
 			this.guna2Panel1 = new Guna.UI2.WinForms.Guna2Panel();
+			this.txtSoHoSo = new Guna.UI2.WinForms.Guna2TextBox();
 			this.label_Main = new System.Windows.Forms.Label();
 			this.btnBack = new Guna.UI2.WinForms.Guna2GradientButton();
 			this.txtGhiChu = new Guna.UI2.WinForms.Guna2TextBox();
@@ -59,7 +60,6 @@
 			this.btnRefresh = new Guna.UI2.WinForms.Guna2GradientButton();
 			this.btnSua = new Guna.UI2.WinForms.Guna2GradientButton();
 			this.btnXoa = new Guna.UI2.WinForms.Guna2GradientButton();
-			this.txtSoHoSo = new Guna.UI2.WinForms.Guna2TextBox();
 			this.guna2Panel1.SuspendLayout();
 			this.guna2GroupBox1.SuspendLayout();
 			this.SuspendLayout();
@@ -101,6 +101,33 @@
 			this.guna2Panel1.Name = "guna2Panel1";
 			this.guna2Panel1.Size = new System.Drawing.Size(1300, 500);
 			this.guna2Panel1.TabIndex = 1;
+			// 
+			// txtSoHoSo
+			// 
+			this.txtSoHoSo.Anchor = System.Windows.Forms.AnchorStyles.Top;
+			this.txtSoHoSo.Animated = true;
+			this.txtSoHoSo.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(234)))), ((int)(((byte)(153)))), ((int)(((byte)(149)))));
+			this.txtSoHoSo.BorderRadius = 6;
+			this.txtSoHoSo.Cursor = System.Windows.Forms.Cursors.IBeam;
+			this.txtSoHoSo.DefaultText = "";
+			this.txtSoHoSo.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(234)))), ((int)(((byte)(153)))), ((int)(((byte)(149)))));
+			this.txtSoHoSo.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(81)))));
+			this.txtSoHoSo.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+			this.txtSoHoSo.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+			this.txtSoHoSo.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(81)))));
+			this.txtSoHoSo.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+			this.txtSoHoSo.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Bold);
+			this.txtSoHoSo.ForeColor = System.Drawing.Color.White;
+			this.txtSoHoSo.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+			this.txtSoHoSo.Location = new System.Drawing.Point(178, 87);
+			this.txtSoHoSo.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
+			this.txtSoHoSo.Name = "txtSoHoSo";
+			this.txtSoHoSo.PasswordChar = '\0';
+			this.txtSoHoSo.PlaceholderText = "";
+			this.txtSoHoSo.SelectedText = "";
+			this.txtSoHoSo.Size = new System.Drawing.Size(279, 39);
+			this.txtSoHoSo.TabIndex = 53;
+			this.txtSoHoSo.TextChanged += new System.EventHandler(this.txtSoHoSo_TextChanged);
 			// 
 			// label_Main
 			// 
@@ -471,6 +498,7 @@
 			this.txtHoTen.SelectedText = "";
 			this.txtHoTen.Size = new System.Drawing.Size(279, 39);
 			this.txtHoTen.TabIndex = 25;
+			this.txtHoTen.TextChanged += new System.EventHandler(this.txtHoTen_TextChanged);
 			// 
 			// label2
 			// 
@@ -665,32 +693,6 @@
 			this.btnXoa.TabIndex = 16;
 			this.btnXoa.Text = "Xoá";
 			this.btnXoa.Click += new System.EventHandler(this.btnXoa_Click);
-			// 
-			// txtSoHoSo
-			// 
-			this.txtSoHoSo.Anchor = System.Windows.Forms.AnchorStyles.Top;
-			this.txtSoHoSo.Animated = true;
-			this.txtSoHoSo.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(234)))), ((int)(((byte)(153)))), ((int)(((byte)(149)))));
-			this.txtSoHoSo.BorderRadius = 6;
-			this.txtSoHoSo.Cursor = System.Windows.Forms.Cursors.IBeam;
-			this.txtSoHoSo.DefaultText = "";
-			this.txtSoHoSo.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(234)))), ((int)(((byte)(153)))), ((int)(((byte)(149)))));
-			this.txtSoHoSo.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(81)))));
-			this.txtSoHoSo.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-			this.txtSoHoSo.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-			this.txtSoHoSo.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(81)))));
-			this.txtSoHoSo.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-			this.txtSoHoSo.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Bold);
-			this.txtSoHoSo.ForeColor = System.Drawing.Color.White;
-			this.txtSoHoSo.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-			this.txtSoHoSo.Location = new System.Drawing.Point(178, 87);
-			this.txtSoHoSo.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
-			this.txtSoHoSo.Name = "txtSoHoSo";
-			this.txtSoHoSo.PasswordChar = '\0';
-			this.txtSoHoSo.PlaceholderText = "";
-			this.txtSoHoSo.SelectedText = "";
-			this.txtSoHoSo.Size = new System.Drawing.Size(279, 39);
-			this.txtSoHoSo.TabIndex = 53;
 			// 
 			// ThemSuaXoa
 			// 

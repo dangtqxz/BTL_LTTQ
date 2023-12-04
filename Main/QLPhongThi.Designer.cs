@@ -82,7 +82,7 @@
 			this.btnLamLai.Name = "btnLamLai";
 			this.btnLamLai.Size = new System.Drawing.Size(180, 55);
 			this.btnLamLai.TabIndex = 39;
-			this.btnLamLai.Text = "Làm mới";
+			this.btnLamLai.Text = "Hiển thị tất cả";
 			this.btnLamLai.Click += new System.EventHandler(this.btnLamLai_Click);
 			// 
 			// label4

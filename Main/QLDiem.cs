@@ -59,7 +59,6 @@ namespace BTL_ThiSinhThiDaiHoc
 				md.Command("Update DiemThi Set DiemMon3 = " + newValue + " Where SoBD = " + primaryKeyValue);
 			}
 
-			loadCBB();
 		}
 
 		private void loadCBB()
