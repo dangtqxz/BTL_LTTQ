@@ -13,6 +13,8 @@ namespace BTL_ThiSinhThiDaiHoc
 	public partial class QLDiem : Form
 	{
 		Modify md = new Modify();
+		private object oldValue;
+
 		public QLDiem()
 		{
 			InitializeComponent();
@@ -42,22 +44,57 @@ namespace BTL_ThiSinhThiDaiHoc
 			int columnIndex = e.ColumnIndex;
 			object newValue = dgvHienThi.Rows[rowIndex].Cells[columnIndex].Value;
 
-			object primaryKeyValue = dgvHienThi.Rows[rowIndex].Cells["SoBD"].Value;
+			// Kiểm tra và hạn chế giá trị nhập vào
+			if (columnIndex == 2 || columnIndex == 3 || columnIndex == 4)
+			{
+				if (newValue == null || string.IsNullOrWhiteSpace(newValue.ToString()))
+				{
+					dgvHienThi.Rows[rowIndex].Cells[columnIndex].Value = DBNull.Value;
+					return;
+				}
 
+				if (!decimal.TryParse(newValue.ToString(), out decimal diem) || diem < 0 || diem > 10)
+				{
+					MessageBox.Show("Vui lòng nhập một số hợp lệ (0 - 10).");
+
+					// Hiển thị lại giá trị cũ
+					dgvHienThi.Rows[rowIndex].Cells[columnIndex].Value = oldValue;
+					return;
+				}
+			}
+
+			// Lưu trữ giá trị mới vào cơ sở dữ liệu
+			object primaryKeyValue = dgvHienThi.Rows[rowIndex].Cells["SoBD"].Value;
 			if (columnIndex == 2)
 			{
-				md.Command("Update DiemThi Set DiemMon1 = " + newValue + " Where SoBD = " + primaryKeyValue);
+				md.Command("UPDATE DiemThi SET DiemMon1 = " + newValue + " WHERE SoBD = " + primaryKeyValue);
 			}
 
 			if (columnIndex == 3)
 			{
-				md.Command("Update DiemThi Set DiemMon2 = " + newValue + " Where SoBD = " + primaryKeyValue);
+				md.Command("UPDATE DiemThi SET DiemMon2 = " + newValue + " WHERE SoBD = " + primaryKeyValue);
 			}
 
 			if (columnIndex == 4)
 			{
-				md.Command("Update DiemThi Set DiemMon3 = " + newValue + " Where SoBD = " + primaryKeyValue);
+				md.Command("UPDATE DiemThi SET DiemMon3 = " + newValue + " WHERE SoBD = " + primaryKeyValue);
 			}
+
+
+			//if (columnIndex == 2)
+			//{
+			//	md.Command("Update DiemThi Set DiemMon1 = " + newValue + " Where SoBD = " + primaryKeyValue);
+			//}
+
+			//if (columnIndex == 3)
+			//{
+			//	md.Command("Update DiemThi Set DiemMon2 = " + newValue + " Where SoBD = " + primaryKeyValue);
+			//}
+
+			//if (columnIndex == 4)
+			//{
+			//	md.Command("Update DiemThi Set DiemMon3 = " + newValue + " Where SoBD = " + primaryKeyValue);
+			//}
 
 		}
 
@@ -77,6 +114,15 @@ namespace BTL_ThiSinhThiDaiHoc
 		private void btnLamLai_Click(object sender, EventArgs e)
 		{
 			loadData();
+		}
+
+		private void dgvHienThi_CellValidating(object sender, DataGridViewCellValidatingEventArgs e)
+		{
+			int rowIndex = e.RowIndex;
+			int columnIndex = e.ColumnIndex;
+
+			// Lưu trữ giá trị cũ trước khi chỉnh sửa
+			oldValue = dgvHienThi.Rows[rowIndex].Cells[columnIndex].Value;
 		}
 	}
 }
