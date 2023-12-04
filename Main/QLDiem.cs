@@ -61,24 +61,30 @@ namespace BTL_ThiSinhThiDaiHoc
 					dgvHienThi.Rows[rowIndex].Cells[columnIndex].Value = oldValue;
 					return;
 				}
+
+				// Lưu trữ giá trị mới vào cơ sở dữ liệu
+				object primaryKeyValue = dgvHienThi.Rows[rowIndex].Cells["SoBD"].Value;
+				if (columnIndex == 2)
+				{
+					md.Command("UPDATE DiemThi SET DiemMon1 = " + newValue + " WHERE SoBD = " + primaryKeyValue);
+				}
+
+				if (columnIndex == 3)
+				{
+					md.Command("UPDATE DiemThi SET DiemMon2 = " + newValue + " WHERE SoBD = " + primaryKeyValue);
+				}
+
+				if (columnIndex == 4)
+				{
+					md.Command("UPDATE DiemThi SET DiemMon3 = " + newValue + " WHERE SoBD = " + primaryKeyValue);
+				}
+			} else
+			{
+				dgvHienThi.Rows[rowIndex].Cells[columnIndex].Value = oldValue;
+				MessageBox.Show("Không được sửa thông tin này", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
 			}
 
-			// Lưu trữ giá trị mới vào cơ sở dữ liệu
-			object primaryKeyValue = dgvHienThi.Rows[rowIndex].Cells["SoBD"].Value;
-			if (columnIndex == 2)
-			{
-				md.Command("UPDATE DiemThi SET DiemMon1 = " + newValue + " WHERE SoBD = " + primaryKeyValue);
-			}
-
-			if (columnIndex == 3)
-			{
-				md.Command("UPDATE DiemThi SET DiemMon2 = " + newValue + " WHERE SoBD = " + primaryKeyValue);
-			}
-
-			if (columnIndex == 4)
-			{
-				md.Command("UPDATE DiemThi SET DiemMon3 = " + newValue + " WHERE SoBD = " + primaryKeyValue);
-			}
+			
 
 
 			//if (columnIndex == 2)
